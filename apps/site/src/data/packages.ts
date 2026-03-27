@@ -146,7 +146,7 @@ return [
       'Detects breaking and non-breaking changes between OpenAPI specs',
       'Semver impact analysis: major, minor, or patch bump',
       'Changelog generation from spec diffs',
-      'Artisan commands: accord:version, drift:coverage',
+      'Artisan commands: accord:version, drift:changelog',
     ],
     codeExample: `# Detect changes and suggest version bump
 php artisan accord:version
@@ -170,7 +170,7 @@ php artisan drift:changelog`,
       'Augments an existing spec or generates from scratch',
     ],
     codeExample: `# Generate openapi.yaml from your routes
-php artisan accord:generate --output openapi.yaml`,
+php artisan forge:generate --output openapi.yaml`,
   },
   {
     slug: 'watch',

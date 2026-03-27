@@ -1,0 +1,43 @@
+---
+// apps/site/src/components/MarketingPage.astro
+import type { OssPackage } from '../data/packages';
+interface Props { pkg: OssPackage; }
+const { pkg } = Astro.props;
+---
+<main class="marketing-page">
+  <header class="marketing-hero">
+    <h1>{pkg.name}</h1>
+    <p class="marketing-tagline">{pkg.tagline}</p>
+    <div class="install-block">
+      <code>{pkg.install}</code>
+    </div>
+    <div class="cta-row">
+      <a href={pkg.docsUrl} class="btn-primary">View Docs</a>
+      <a href={pkg.githubUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub ↗</a>
+    </div>
+  </header>
+  <section class="marketing-features">
+    <h2>Features</h2>
+    <ul>
+      {pkg.features.map(f => <li>{f}</li>)}
+    </ul>
+  </section>
+  <section class="marketing-example">
+    <h2>Example</h2>
+    <pre><code>{pkg.codeExample}</code></pre>
+  </section>
+</main>
+
+<style>
+.marketing-page { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem; }
+.marketing-hero { margin-bottom: 3rem; max-width: 600px; }
+.marketing-hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+.marketing-tagline { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+.install-block { margin-bottom: 1.5rem; }
+.install-block code { font-size: 0.9rem; color: var(--accent); background: var(--bg-elevated); padding: 0.5rem 0.875rem; border-radius: var(--radius); border: 1px solid var(--border); }
+.cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.marketing-features, .marketing-example { margin-bottom: 2.5rem; }
+.marketing-features h2, .marketing-example h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem; }
+.marketing-features ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.marketing-features li::before { content: '→ '; color: var(--accent); }
+</style>

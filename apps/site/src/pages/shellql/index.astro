@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MarketingPage from '../../components/MarketingPage.astro';
+import { tuiPackages } from '../../data/packages';
+const pkg = tuiPackages.find(p => p.slug === 'shellql')!;
+---
+<Layout title={pkg.name} description={pkg.tagline}>
+  <MarketingPage pkg={pkg} />
+</Layout>

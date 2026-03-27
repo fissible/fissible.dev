@@ -11,6 +11,9 @@ export default defineConfig({
       social: {
         github: 'https://github.com/fissible',
       },
+      components: {
+        SiteTitle: './src/overrides/SiteTitle.astro',
+      },
       sidebar: [
         { label: 'shellframe', autogenerate: { directory: 'shellframe' } },
         { label: 'seed',       autogenerate: { directory: 'seed' } },

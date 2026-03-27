@@ -1,0 +1,28 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+---
+<a href="https://fissible.dev" class="site-back">fissible.dev</a>
+<span class="site-sep" aria-hidden="true">/</span>
+<a href="/" class="site-title">docs</a>
+
+<style>
+  .site-back,
+  .site-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--sl-color-white);
+  }
+  .site-back {
+    opacity: 0.65;
+  }
+  .site-back:hover {
+    opacity: 1;
+  }
+  .site-sep {
+    margin: 0 0.3rem;
+    opacity: 0.35;
+    color: var(--sl-color-white);
+    font-weight: 400;
+  }
+</style>

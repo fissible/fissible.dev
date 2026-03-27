@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ComingSoonPage from '../../components/ComingSoonPage.astro';
+import { paidProducts } from '../../data/packages';
+const product = paidProducts.find(p => p.slug === 'station')!;
+---
+<Layout title={product.name} description={product.description}>
+  <ComingSoonPage product={product} formspreeId="mojpvkrq" />
+</Layout>

@@ -1,17 +1,60 @@
 ---
-
+// apps/site/src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import PackageCard from '../components/PackageCard.astro';
+import { tuiPackages, phpPackages, paidProducts } from '../data/packages';
 ---
+<Layout title="fissible">
+  <main class="homepage">
+    <header class="homepage-hero">
+      <h1>fissible</h1>
+      <p class="homepage-tagline">
+        Developer tools that teach, not abstract.
+        Free tools build trust; paid tools build revenue.
+      </p>
+    </header>
+    <div class="suite-grid">
+      <section class="suite-section">
+        <h2>TUI Suite</h2>
+        <div class="package-grid">
+          {tuiPackages.map(p => <PackageCard pkg={p} />)}
+        </div>
+      </section>
+      <section class="suite-section">
+        <h2>PHP Suite</h2>
+        <div class="package-grid">
+          {phpPackages.map(p => <PackageCard pkg={p} />)}
+        </div>
+      </section>
+    </div>
+    <section class="coming-soon-row">
+      <h2>Coming Soon</h2>
+      <div class="coming-soon-list">
+        {paidProducts.map(p => (
+          <a href={`/${p.slug}`} class="coming-soon-item">
+            <span class="coming-soon-name">{p.name}</span>
+            <span class="coming-soon-tagline">{p.tagline}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<style>
+.homepage { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem; }
+.homepage-hero { text-align: center; margin-bottom: 4rem; }
+.homepage-hero h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+.homepage-tagline { color: var(--text-muted); font-size: 1.05rem; max-width: 480px; margin: 0 auto; }
+.suite-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
+@media (max-width: 700px) { .suite-grid { grid-template-columns: 1fr; } }
+.suite-section h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem; }
+.package-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+.coming-soon-row { border-top: 1px solid var(--border); padding-top: 2rem; }
+.coming-soon-row h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem; }
+.coming-soon-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.coming-soon-item { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.5rem 0.875rem; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-muted); transition: color 0.15s, border-color 0.15s; }
+.coming-soon-item:hover { color: var(--text); border-color: var(--text-muted); }
+.coming-soon-name { font-weight: 600; font-size: 0.875rem; color: var(--text); }
+.coming-soon-tagline { font-size: 0.8rem; }
+</style>

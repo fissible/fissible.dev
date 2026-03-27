@@ -1,0 +1,27 @@
+---
+// apps/site/src/components/PackageCard.astro
+import type { OssPackage } from '../data/packages';
+interface Props { pkg: OssPackage; }
+const { pkg } = Astro.props;
+---
+<a href={`/${pkg.slug}`} class="package-card">
+  <h3>{pkg.name}</h3>
+  <p>{pkg.tagline}</p>
+  <code>{pkg.install}</code>
+</a>
+
+<style>
+.package-card {
+  display: block;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s;
+}
+.package-card:hover { border-color: var(--accent); background: var(--bg-elevated); color: var(--text); }
+.package-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem; }
+.package-card p  { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+.package-card code { font-size: 0.8rem; color: var(--accent); }
+</style>

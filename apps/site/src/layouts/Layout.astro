@@ -1,6 +1,7 @@
 ---
 // apps/site/src/layouts/Layout.astro
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
 interface Props {
   title: string;
   description?: string;
@@ -16,10 +17,14 @@ const pageTitle = title === 'fissible' ? 'fissible' : `${title} — fissible`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
+    <slot name="head" />
   </head>
   <body>
+    <Nav />
     <slot />
   </body>
 </html>

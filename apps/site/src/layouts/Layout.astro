@@ -2,6 +2,7 @@
 // apps/site/src/layouts/Layout.astro
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
+import Analytics from '@vercel/analytics/astro';
 interface Props {
   title: string;
   description?: string;
@@ -26,5 +27,6 @@ const pageTitle = title === 'fissible' ? 'fissible' : `${title} — fissible`;
   <body>
     <Nav />
     <slot />
+    <Analytics />
   </body>
 </html>

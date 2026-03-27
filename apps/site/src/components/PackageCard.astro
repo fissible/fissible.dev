@@ -1,10 +1,13 @@
 ---
 // apps/site/src/components/PackageCard.astro
 import type { OssPackage } from '../data/packages';
-interface Props { pkg: OssPackage; }
-const { pkg } = Astro.props;
+interface Props {
+  pkg: OssPackage;
+  href?: string;
+}
+const { pkg, href = `/${pkg.slug}` } = Astro.props;
 ---
-<a href={`/${pkg.slug}`} class="package-card">
+<a href={href} class="package-card">
   <h3>{pkg.name}</h3>
   <p>{pkg.tagline}</p>
   <code>{pkg.install}</code>

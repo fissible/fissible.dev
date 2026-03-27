@@ -1,0 +1,12 @@
+{
+  "name": "fissible.dev",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev:site": "npm run dev --workspace=apps/site",
+    "dev:docs": "npm run dev --workspace=apps/docs",
+    "build": "npm run build --workspace=apps/site && npm run build --workspace=apps/docs",
+    "check": "npm run check --workspace=apps/site && npm run check --workspace=apps/docs",
+    "test": "npm run test --workspace=apps/site"
+  }
+}

@@ -80,12 +80,13 @@ pre {
 .nav-dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%;
   left: 0;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.5rem;
+  padding-top: calc(0.5rem + 4px);
   min-width: 160px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }

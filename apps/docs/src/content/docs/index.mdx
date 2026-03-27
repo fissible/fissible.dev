@@ -1,40 +1,36 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: fissible docs
+description: Documentation for all fissible OSS packages — TUI Suite and PHP Suite.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: Documentation for the fissible suite of developer tools.
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: TUI Suite
+      link: /shellframe/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: PHP Suite
+      link: /accord/
+      icon: right-arrow
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Next steps
+## TUI Suite
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+<CardGrid>
+  <LinkCard title="shellframe" description="TUI framework for bash" href="/shellframe/" />
+  <LinkCard title="seed" description="Bash fake data generator" href="/seed/" />
+  <LinkCard title="ptyunit" description="PTY test framework for bash" href="/ptyunit/" />
+  <LinkCard title="shellql" description="Terminal SQLite workbench" href="/shellql/" />
+</CardGrid>
+
+## PHP Suite
+
+<CardGrid>
+  <LinkCard title="accord" description="OpenAPI contract validator for Laravel" href="/accord/" />
+  <LinkCard title="drift" description="API drift detection and changelog generation" href="/drift/" />
+  <LinkCard title="forge" description="OpenAPI spec scaffolding from Laravel routes" href="/forge/" />
+  <LinkCard title="watch" description="Browser-based dev cockpit for Laravel" href="/watch/" />
+  <LinkCard title="fault" description="Exception tracking and triage for Laravel" href="/fault/" />
 </CardGrid>

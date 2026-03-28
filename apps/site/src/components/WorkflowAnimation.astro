@@ -1,0 +1,98 @@
+---
+// apps/site/src/components/WorkflowAnimation.astro
+const steps = [
+  { label: 'Draft', desc: 'Write safely', accent: false },
+  { label: 'Submit', desc: 'Request review', accent: false },
+  { label: 'Approve', desc: 'Must sign off', accent: true },
+  { label: 'Publish', desc: 'Goes live', accent: false },
+  { label: 'Audit Log', desc: 'Everything tracked', accent: false },
+];
+---
+<section class="workflow" id="workflow">
+  <h2 class="workflow-heading">Nothing goes live without approval</h2>
+  <p class="workflow-sub">Every step is enforced. Every action is logged.</p>
+  <div class="workflow-steps">
+    {steps.map((step, i) => (
+      <>
+        <div class:list={['workflow-step', { 'workflow-step--accent': step.accent }]}>
+          {step.accent && <span class="workflow-check">✓</span>}
+          <span class="workflow-label">{step.label}</span>
+          <span class="workflow-desc">{step.desc}</span>
+        </div>
+        {i < steps.length - 1 && <span class="workflow-arrow">→</span>}
+      </>
+    ))}
+  </div>
+</section>
+
+<style>
+.workflow {
+  padding: 3.5rem 2rem;
+  text-align: center;
+  background: var(--bg-subtle);
+}
+.workflow-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.workflow-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.workflow-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.workflow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  min-width: 80px;
+}
+.workflow-step--accent {
+  border: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, var(--bg-elevated));
+  box-shadow: 0 0 20px rgba(125,211,252,0.15);
+  padding: 0.85rem 1.1rem;
+}
+.workflow-check {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.workflow-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.workflow-step--accent .workflow-label {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.workflow-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.workflow-step--accent .workflow-desc {
+  color: var(--text-muted);
+  opacity: 0.9;
+}
+.workflow-arrow {
+  color: var(--border);
+  font-size: 1rem;
+}
+@media (max-width: 600px) {
+  .workflow-steps { flex-direction: column; }
+  .workflow-arrow { transform: rotate(90deg); }
+}
+</style>

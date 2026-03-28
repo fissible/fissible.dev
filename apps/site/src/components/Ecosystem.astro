@@ -1,0 +1,71 @@
+---
+// apps/site/src/components/Ecosystem.astro
+const tools = [
+  { name: 'accord', desc: 'OpenAPI contract validator', url: 'https://github.com/fissible/accord' },
+  { name: 'drift', desc: 'API drift detection', url: 'https://github.com/fissible/drift' },
+  { name: 'forge', desc: 'OpenAPI spec scaffolding', url: 'https://github.com/fissible/forge' },
+];
+---
+<section class="ecosystem">
+  <h2 class="ecosystem-heading">Built on open-source tools</h2>
+  <p class="ecosystem-sub">Station's API layer is powered by tools you can use independently.</p>
+  <div class="ecosystem-tools">
+    {tools.map(t => (
+      <a href={t.url} target="_blank" rel="noopener noreferrer" class="ecosystem-tool">
+        <span class="ecosystem-tool-name">{t.name}</span>
+        <span class="ecosystem-tool-desc">{t.desc}</span>
+      </a>
+    ))}
+  </div>
+  <a href="/tools" class="ecosystem-link">Explore all tools →</a>
+</section>
+
+<style>
+.ecosystem {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.ecosystem-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.ecosystem-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.ecosystem-tools {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ecosystem-tool {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+.ecosystem-tool:hover { border-color: var(--accent); color: var(--text); }
+.ecosystem-tool-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.ecosystem-tool-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.ecosystem-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.ecosystem-link:hover { color: var(--accent-hover); }
+</style>

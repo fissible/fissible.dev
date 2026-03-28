@@ -1,0 +1,53 @@
+---
+// apps/site/src/components/Hero.astro
+---
+<section class="hero">
+  <p class="hero-brand">fissible</p>
+  <h1 class="hero-headline">Stop accidental publishing.<br>Ship APIs that don't break.</h1>
+  <p class="hero-clarifying">Approval workflows and API contract enforcement that prevent mistakes before they go live.</p>
+  <p class="hero-descriptor">Self-hosted CMS and API platform. One-time license.</p>
+  <div class="hero-cta">
+    <a href="/station" class="btn-primary">Join the Waitlist</a>
+    <a href="#workflow" class="btn-secondary">See How It Works ↓</a>
+  </div>
+</section>
+
+<style>
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+}
+.hero-brand {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.hero-headline {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+.hero-clarifying {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto 0.5rem;
+  line-height: 1.5;
+}
+.hero-descriptor {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+.hero-cta {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style>

@@ -1,0 +1,59 @@
+---
+// apps/site/src/components/TechCredibility.astro
+const cards = [
+  { title: 'Self-Hosted', benefit: 'Your data stays under your control' },
+  { title: 'Laravel', benefit: 'Built on a framework your team already knows' },
+  { title: 'API Contracts', benefit: 'Prevent breaking changes before deployment' },
+];
+---
+<section class="techcred">
+  <h2 class="techcred-heading">Built for developers who ship carefully</h2>
+  <div class="techcred-grid">
+    {cards.map(c => (
+      <div class="techcred-card">
+        <h3>{c.title}</h3>
+        <p>{c.benefit}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+.techcred {
+  padding: 3.5rem 2rem;
+  background: var(--bg-subtle);
+  text-align: center;
+}
+.techcred-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.techcred-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.techcred-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1rem;
+  border-radius: 8px;
+  text-align: left;
+}
+.techcred-card h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.techcred-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .techcred-grid { grid-template-columns: 1fr; }
+}
+</style>

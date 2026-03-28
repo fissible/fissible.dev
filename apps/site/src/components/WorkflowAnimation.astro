@@ -95,4 +95,41 @@ const steps = [
   .workflow-steps { flex-direction: column; }
   .workflow-arrow { transform: rotate(90deg); }
 }
+/* Animation */
+.workflow-step,
+.workflow-arrow {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.workflow-steps.animate .workflow-step,
+.workflow-steps.animate .workflow-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+.workflow-steps.animate .workflow-step:nth-child(1) { transition-delay: 0ms; }
+.workflow-steps.animate .workflow-arrow:nth-child(2) { transition-delay: 100ms; }
+.workflow-steps.animate .workflow-step:nth-child(3) { transition-delay: 200ms; }
+.workflow-steps.animate .workflow-arrow:nth-child(4) { transition-delay: 300ms; }
+.workflow-steps.animate .workflow-step:nth-child(5) { transition-delay: 400ms; }
+.workflow-steps.animate .workflow-arrow:nth-child(6) { transition-delay: 500ms; }
+.workflow-steps.animate .workflow-step:nth-child(7) { transition-delay: 600ms; }
+.workflow-steps.animate .workflow-arrow:nth-child(8) { transition-delay: 700ms; }
+.workflow-steps.animate .workflow-step:nth-child(9) { transition-delay: 800ms; }
 </style>
+
+<script>
+  const steps = document.querySelector('.workflow-steps');
+  if (steps) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          steps.classList.add('animate');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(steps);
+  }
+</script>

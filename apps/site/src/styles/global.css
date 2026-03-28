@@ -63,50 +63,14 @@ pre {
 
 .nav-links { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
 
-.nav-dropdown { position: relative; }
-
-.nav-dropdown-toggle {
-  background: none;
-  border: none;
+.nav-link {
   color: var(--text-muted);
   font-size: 0.9rem;
-  cursor: pointer;
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius);
   transition: color 0.15s, background 0.15s;
 }
-.nav-dropdown-toggle:hover { color: var(--text); background: var(--bg-elevated); }
-
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.5rem;
-  padding-top: calc(0.5rem + 4px);
-  min-width: 160px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-.nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu { display: flex; flex-direction: column; gap: 2px; }
-
-.nav-dropdown-menu a {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-}
-.nav-dropdown-menu a:hover { color: var(--text); background: var(--bg); }
-
-.nav-github {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  padding: 0.4rem 0.75rem;
-}
-.nav-github:hover { color: var(--text); }
+.nav-link:hover { color: var(--text); background: var(--bg-elevated); }
 
 /* Buttons */
 .btn-primary {

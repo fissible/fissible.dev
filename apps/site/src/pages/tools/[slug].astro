@@ -1,0 +1,19 @@
+---
+// apps/site/src/pages/tools/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import MarketingPage from '../../components/MarketingPage.astro';
+import { allOssPackages } from '../../data/packages';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return allOssPackages.map(pkg => ({
+    params: { slug: pkg.slug },
+    props: { pkg },
+  }));
+};
+
+const { pkg } = Astro.props;
+---
+<Layout title={pkg.name} description={pkg.tagline}>
+  <MarketingPage pkg={pkg} />
+</Layout>

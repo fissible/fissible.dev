@@ -1,0 +1,13 @@
+{
+  "redirects": [
+    { "source": "/accord", "destination": "/tools/accord", "permanent": true },
+    { "source": "/drift", "destination": "/tools/drift", "permanent": true },
+    { "source": "/forge", "destination": "/tools/forge", "permanent": true },
+    { "source": "/seed", "destination": "/tools/seed", "permanent": true },
+    { "source": "/shellframe", "destination": "/tools/shellframe", "permanent": true },
+    { "source": "/ptyunit", "destination": "/tools/ptyunit", "permanent": true },
+    { "source": "/shellql", "destination": "/tools/shellql", "permanent": true },
+    { "source": "/watch", "destination": "/tools/watch", "permanent": true },
+    { "source": "/fault", "destination": "/tools/fault", "permanent": true }
+  ]
+}

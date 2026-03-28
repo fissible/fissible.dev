@@ -7,7 +7,7 @@ const product = paidProducts.find(p => p.slug === 'sigil')!;
 <Layout title={product.name} description={product.description}>
   <ComingSoonPage
     product={product}
-    formspreeId="xeepornj"
+    formspreeId={product.formspreeId}
     statusNote="sigil v1 is complete. Available to purchase the moment our store opens."
   />
 </Layout>

@@ -5,5 +5,5 @@ import { paidProducts } from '../../data/packages';
 const product = paidProducts.find(p => p.slug === 'guit')!;
 ---
 <Layout title={product.name} description={product.description}>
-  <ComingSoonPage product={product} formspreeId="xzdkzjyn" />
+  <ComingSoonPage product={product} formspreeId={product.formspreeId} />
 </Layout>

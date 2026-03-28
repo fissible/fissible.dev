@@ -19,6 +19,7 @@ export interface PaidProduct {
   tagline: string;
   description: string;
   status: 'coming-soon' | 'purchase-pending';
+  formspreeId: string;
 }
 
 export const tuiPackages: OssPackage[] = [
@@ -220,6 +221,7 @@ export const paidProducts: PaidProduct[] = [
     tagline: 'A terminal git client',
     description: 'A keyboard-driven terminal git client built on shellframe. Working copy, history, cherry-pick, branch graph, and a 3-pane merge resolver that registers as git mergetool.',
     status: 'coming-soon',
+    formspreeId: 'xzdkzjyn',
   },
   {
     slug: 'sigil',
@@ -227,6 +229,7 @@ export const paidProducts: PaidProduct[] = [
     tagline: 'Developer credential and connection broker',
     description: 'A local-first CLI that stores secrets, database connections, SSH profiles, and API tokens — with a pipeline-composable interface and OS keychain backend. Built in Rust.',
     status: 'purchase-pending',
+    formspreeId: 'xeepornj',
   },
   {
     slug: 'station',
@@ -234,6 +237,7 @@ export const paidProducts: PaidProduct[] = [
     tagline: 'A self-hosted Laravel CMS platform',
     description: 'Schema-driven content types, a Draft→Review→Published approval workflow, and a browser-based installer. One-time per-site license.',
     status: 'coming-soon',
+    formspreeId: 'mojpvkrq',
   },
   {
     slug: 'conduit',
@@ -241,6 +245,7 @@ export const paidProducts: PaidProduct[] = [
     tagline: 'A terminal HTTP client',
     description: 'Request builder, collections, response viewer, and sigil credential integration in the free tier. Paid tier adds accord/drift contract validation in-terminal.',
     status: 'coming-soon',
+    formspreeId: 'xpqowybq',
   },
 ];
 

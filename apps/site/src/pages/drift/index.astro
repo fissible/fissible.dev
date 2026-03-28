@@ -1,9 +1,0 @@
----
-import Layout from '../../layouts/Layout.astro';
-import MarketingPage from '../../components/MarketingPage.astro';
-import { phpPackages } from '../../data/packages';
-const pkg = phpPackages.find(p => p.slug === 'drift')!;
----
-<Layout title={pkg.name} description={pkg.tagline}>
-  <MarketingPage pkg={pkg} />
-</Layout>

@@ -5,7 +5,7 @@ interface Props {
   pkg: OssPackage;
   href?: string;
 }
-const { pkg, href = `/${pkg.slug}` } = Astro.props;
+const { pkg, href = `/tools/${pkg.slug}` } = Astro.props;
 ---
 <a href={href} class="package-card">
   <h3>{pkg.name}</h3>

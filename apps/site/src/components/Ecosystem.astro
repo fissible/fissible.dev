@@ -1,9 +1,9 @@
 ---
 // apps/site/src/components/Ecosystem.astro
 const tools = [
-  { name: 'accord', desc: 'OpenAPI contract validator', url: 'https://github.com/fissible/accord' },
-  { name: 'drift', desc: 'API drift detection', url: 'https://github.com/fissible/drift' },
-  { name: 'forge', desc: 'OpenAPI spec scaffolding', url: 'https://github.com/fissible/forge' },
+  { name: 'accord', desc: 'OpenAPI contract validator', url: '/tools/accord' },
+  { name: 'drift', desc: 'API drift detection', url: '/tools/drift' },
+  { name: 'forge', desc: 'OpenAPI spec scaffolding', url: '/tools/forge' },
 ];
 ---
 <section class="ecosystem">
@@ -11,7 +11,7 @@ const tools = [
   <p class="ecosystem-sub">Station's API layer is powered by tools you can use independently.</p>
   <div class="ecosystem-tools">
     {tools.map(t => (
-      <a href={t.url} target="_blank" rel="noopener noreferrer" class="ecosystem-tool">
+      <a href={t.url} class="ecosystem-tool">
         <span class="ecosystem-tool-name">{t.name}</span>
         <span class="ecosystem-tool-desc">{t.desc}</span>
       </a>

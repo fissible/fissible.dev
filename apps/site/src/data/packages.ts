@@ -1,9 +1,16 @@
 // apps/site/src/data/packages.ts
 
+export interface MarketingSection {
+  title: string;
+  body: string;
+  code?: string;
+}
+
 export interface OssPackage {
   slug: string;
   name: string;
   tagline: string;
+  description?: string;
   install: string;
   installLabel: 'brew' | 'composer';
   docsUrl: string;
@@ -11,6 +18,7 @@ export interface OssPackage {
   features: [string, string, string, string];
   codeExample: string;
   suite: 'tui' | 'php';
+  marketingSections?: MarketingSection[];
 }
 
 export interface PaidProduct {
@@ -70,6 +78,7 @@ seed ecommerce.product --count 100 --format csv`,
     slug: 'ptyunit',
     name: 'ptyunit',
     tagline: 'PTY test framework for bash',
+    description: 'Test your bash scripts — even the interactive ones that take over the terminal. ptyunit is the only bash test framework with real pseudoterminal support, built-in mocking, native code coverage, and zero dependencies.',
     install: 'brew install fissible/tap/ptyunit',
     installLabel: 'brew',
     docsUrl: 'https://docs.fissible.dev/ptyunit',
@@ -87,6 +96,43 @@ pty_test "shows welcome screen" <<'EOF'
   pty_run "shql"
   pty_assert_contains "Welcome to shellql"
 EOF`,
+    marketingSections: [
+      {
+        title: 'Most test frameworks stop at stdout',
+        body: 'If your script opens /dev/tty for a menu, a prompt, or a TUI — standard test tools can\'t touch it. ptyunit runs your script inside a real pseudoterminal, sends keystrokes like a human, strips ANSI escape codes, and gives you clean text to assert against. Menus, password prompts, progress bars, fzf pickers, dialog boxes — all testable.',
+        code: `# Drive a TUI with keystrokes, assert on the result
+out=$(python3 pty_run.py my_menu.sh DOWN DOWN ENTER)
+assert_contains "$out" "You selected: cherry"`,
+      },
+      {
+        title: 'Real bugs in real code',
+        body: 'We pointed ptyunit at a 1,000-line bash TUI password generator posted on Reddit — no tests, two operating modes, keyboard navigation, history tracking, and i18n. ptyunit found a silent flag-ordering bug where -d (DB-safe) and -s (simple) conflict depending on order — passwords were labeled "DB-safe" but contained no DB-safe characters. It caught a crash when -l is passed without a value, and a bash 4.3 compatibility issue in the history code that only manifests interactively. None of the TUI behavior — mode toggles, history navigation, the help screen, language switching via arrow keys — is reachable from any other test framework.',
+        code: `test_that "DB-safe flag wins regardless of flag order"
+run passgen -d -s -l 24 -q
+assert_match '[_.\\-]' "$output"
+
+test_that "history navigation shows correct position"
+out=$(python3 pty_run.py passgen r r r '<' q)
+assert_contains "$out" "2/3"`,
+      },
+      {
+        title: 'Mocking with zero boilerplate',
+        body: 'Replace any command with a fake. Record every call. Verify arguments and call count. Mocks clean up automatically at the next test boundary — no manual teardown. Need smarter behavior? Use a heredoc body to write conditional logic.',
+        code: `test_that "deploy pushes to staging"
+ptyunit_mock git --output "pushed"
+ptyunit_mock curl --exit 0
+
+deploy_to_staging
+
+assert_called git
+assert_called_with git "push" "origin" "staging"
+assert_called_times curl 1`,
+      },
+      {
+        title: 'Coverage that works everywhere',
+        body: 'Built-in code coverage via PS4 tracing — no kcov, no Linux-only tools. Works on macOS. PTY integration tests contribute to coverage automatically: TUI code paths exercised through the PTY driver appear in the report with no extra configuration. Set a minimum threshold to gate CI.',
+      },
+    ],
   },
   {
     slug: 'shellql',

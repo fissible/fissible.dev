@@ -13,10 +13,12 @@ export interface OssPackage {
   description?: string;
   install: string;
   installLabel: 'brew' | 'composer';
+  installNote?: string;
   docsUrl: string;
   githubUrl: string;
   features: [string, string, string, string];
   codeExample: string;
+  screenshots?: string[];
   suite: 'tui' | 'php';
   marketingSections?: MarketingSection[];
 }

@@ -140,23 +140,59 @@ assert_called_times curl 1`,
   {
     slug: 'shellql',
     name: 'shellql',
-    tagline: 'Terminal SQLite workbench',
+    tagline: 'SQLite workbench that runs where your data lives',
+    description: `You SSH into a server. The SQLite database is right there. Every GUI tool you own stops working.\n\nShellQL is a full SQLite workbench that runs in your terminal. Open a database on any server you can SSH into. Browse schemas, run queries, and edit records without leaving the shell. Runs on bash 3.2–5.2 across macOS and Linux, tested in CI.`,
     install: 'brew install fissible/tap/shellql',
     installLabel: 'brew',
+    installNote: 'Works over SSH. No GUI. No port forwarding.',
     docsUrl: 'https://docs.fissible.dev/shellql',
     githubUrl: 'https://github.com/fissible/shellql',
     suite: 'tui',
     features: [
-      'Schema browser, table view, query screen, and record inspector',
-      'Real sqlite3 adapter — list tables, describe schema, fetch and filter rows',
-      'Built on shellframe — keyboard-driven, no mouse required',
-      'Free and MIT-licensed; enterprise edition planned',
+      'Schema browser, table view, query tab, and record inspector',
+      'Full CRUD — insert, update, and delete rows with an intuitive UI',
+      'Works over SSH — browse and edit data directly on the machine',
+      'Mouse and keyboard support; bash 3.2–5.2, tested in CI across macOS and Linux',
     ],
-    codeExample: `# Open a database
+    codeExample: `# Open a database directly
 shql myapp.db
 
 # Use a named connection from sigil
 shql --connection production`,
+    screenshotsLabel: 'Schema browser · Table view · Record editor',
+    screenshots: [
+      '/screenshots/shellql/schema-browser.png',
+      '/screenshots/shellql/table-data-view.png',
+      '/screenshots/shellql/row-editor.png',
+    ],
+    marketingSections: [
+      {
+        title: 'Works where your data lives',
+        body: 'Remote servers. Docker containers. CI jobs. If the machine has bash and sqlite3, you can open the database directly. No GUI install. No port forwarding. No syncing files back to your laptop. SSH in and run it.',
+        code: `# Local
+shql myapp.db
+
+# Remote — SSH and run directly
+ssh user@server
+shql /var/app/production.db
+
+# Named connection from sigil
+shql --connection production`,
+      },
+      {
+        title: 'Browse, query, and mutate',
+        body: 'ShellQL has four screens: a schema browser for listing all tables and views, a table view with inline filtering and multi-tab support (open several tables at once), a query tab for raw SQL execution, and a record editor — a schema-aware form overlay that shows column types and constraints. Insert, update, and delete are first-class. Table creation uses a SQL tab preloaded with a CREATE TABLE template, giving you full DDL control.',
+      },
+      {
+        title: 'Keyboard-driven, mouse-friendly',
+        body: 'Most terminal tools pick one input model. ShellQL supports both. Navigate screens and records with keyboard shortcuts for speed, or use the mouse when that\'s faster. Keybindings are shown at the bottom of each screen — you don\'t need to read the docs to get started.',
+      },
+      {
+        title: 'Zero dependencies, real architecture',
+        body: 'No runtime dependencies beyond bash and sqlite3 — both available on most systems. Built on shellframe, a TUI framework for bash that provides screen management, keyboard routing, and component lifecycle. Tested on bash 3.2–5.2 across macOS and Linux in CI.',
+        code: `brew install fissible/tap/shellql`,
+      },
+    ],
   },
 ];
 

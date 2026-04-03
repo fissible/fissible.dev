@@ -1,0 +1,42 @@
+---
+// apps/site/src/components/AnnouncementBar.astro
+---
+<div class="announcement-bar">
+  <span class="announcement-label">New</span>
+  ShellQL — SQLite workbench that runs over SSH (bash, no GUI)
+  <a href="/tools/shellql" class="announcement-link">→ Check it out</a>
+</div>
+
+<style>
+.announcement-bar {
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.announcement-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.7rem;
+  background: rgba(0,0,0,0.2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+.announcement-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.announcement-link:hover {
+  opacity: 0.85;
+}
+</style>

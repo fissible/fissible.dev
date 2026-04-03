@@ -1,6 +1,6 @@
 # ShellQL Launch Prep — Design Spec
 
-**Date:** 2026-04-03  
+**Date:** 2026-04-03 (revised after SME review)
 **Scope:** fissible.dev website updates to support the ShellQL HN launch  
 **Approach:** C — Full ShellQL tool page + homepage announcement bar + dev.to blog outline
 
@@ -8,34 +8,69 @@
 
 ## Goal
 
-Prepare fissible.dev to receive HN traffic for a "Show HN: ShellQL — a bash TUI for SQLite, zero dependencies" launch. The ShellQL tool page should be the primary landing destination. The homepage should signal the launch without disrupting the Station-first narrative.
+Prepare fissible.dev to receive HN traffic for a "Show HN: ShellQL — a bash TUI for SQLite, zero dependencies" launch. The ShellQL tool page is the primary landing destination. HN users decide in ~10 seconds — the page must answer "what is it, why is it different, how do I try it" above the fold.
 
 ---
 
 ## 1. ShellQL Tool Page (`/tools/shellql`)
 
-**File:** `apps/site/src/data/packages.ts` — update the `shellql` entry
+**File:** `apps/site/src/data/packages.ts` — update the `shellql` entry  
+**File:** `apps/site/src/components/MarketingPage.astro` — add `image` support
 
-No template changes required. The `MarketingPage.astro` component already renders `description` and `marketingSections` when present; shellql just lacks them today.
+### Tagline (existing field, update)
 
-### Description (new field)
+`"SQLite workbench that runs where your data lives"`
 
-> ShellQL is a full SQLite workbench that runs in your terminal. Open a database on any server you can SSH into — no GUI, no port forwarding, no setup. Browse schemas, run queries, and edit records with a keyboard-driven TUI that also supports mouse input.
+### Description (new field — pain-first hook)
 
-### Marketing Sections (4 new entries)
+> You SSH into a server. The SQLite database is right there. Every GUI tool you own stops working.
+>
+> ShellQL is a full SQLite workbench that runs in your terminal. Open a database on any server you can SSH into. Browse schemas, run queries, and edit records without leaving the shell. Runs on bash 3.2–5.2 across macOS and Linux, tested in CI.
+
+### Quick start block (new — rendered immediately after description)
+
+This appears before the features list. Requires either a new `quickStart` field on `OssPackage`, or inline in `MarketingPage` if the install block is promoted. Implementation note: ensure the GitHub link is rendered prominently here too (it already exists in the CTA row — verify it's visible without scrolling).
+
+```bash
+brew install fissible/tap/shellql
+shql my.db
+```
+
+Sub-label under the block: `Works over SSH. No GUI. No port forwarding.`
+
+### Features list (update existing 4 bullets)
+
+- Schema browser, table view, query tab, and record inspector
+- Full CRUD — insert, update, and delete rows with an intuitive UI
+- Works over SSH — browse and edit data directly on the machine
+- Mouse and keyboard support; bash 3.2–5.2, tested in CI across macOS and Linux
+
+### Visual proof section (new — between Section 1 and Section 2)
+
+Three screenshots displayed in sequence (or a single asciinema embed if a recording is produced later). User will provide screenshots staged as follows:
+
+1. **Schema browser** — database with 3–4 real-looking tables (users, orders, products, etc.)
+2. **Table view** — paginated rows with visible filtering UI
+3. **Record inspector/edit** — single record open in form-style edit view
+
+Implementation: add an optional `screenshots: string[]` field to `OssPackage` (relative paths from `public/`). `MarketingPage` renders them in a row or stacked block with a plain label: "Schema browser · Table view · Record inspector."
+
+No marketing copy around the screenshots. Let the UI speak.
+
+### Marketing Sections (4 entries)
 
 **Section 1 — Works where your data lives**
 
 Title: `Works where your data lives`
 
-Body: Remote servers, Docker containers, CI environments. Every machine with bash and sqlite3 can run ShellQL. There's no GUI to install, no port to forward, no config file to write. Connect over SSH and open a database with one command: `shql path/to/db.sqlite`. Named connections via sigil are available if you want them.
+Body: Remote servers. Docker containers. CI jobs. If the machine has bash and sqlite3, you can open the database directly. No GUI install. No port forwarding. No syncing files back to your laptop. SSH in and run it.
 
 Code:
 ```bash
-# Open a database directly
+# Local
 shql myapp.db
 
-# Over SSH — just works
+# Remote — SSH and run directly
 ssh user@server
 shql /var/app/production.db
 
@@ -49,9 +84,15 @@ shql --connection production
 
 Title: `Browse, query, and mutate`
 
-Body: ShellQL has four screens: a schema browser for exploring tables and columns, a table view with filtering for browsing rows, a query tab for running arbitrary SQL, and a record inspector for viewing and editing individual rows. Insert, update, and delete are first-class — not read-only like most TUI database tools. Table creation uses a SQL query tab preloaded with a `CREATE TABLE` template, giving you full DDL control without a rigid GUI wizard.
+Body: ShellQL has four screens:
+- **Schema browser** — tree-style navigation through tables and columns
+- **Table view** — paginated rows with filtering
+- **Query tab** — raw SQL execution with results inline
+- **Record inspector** — form-style editing; insert, update, and delete are first-class
 
-No code block for this section — the prose is the content.
+Table creation uses a SQL query tab preloaded with a `CREATE TABLE` template, giving you full DDL control.
+
+No code block.
 
 ---
 
@@ -69,24 +110,20 @@ No code block.
 
 Title: `Zero dependencies, real architecture`
 
-Body: ShellQL has no runtime dependencies beyond bash and sqlite3 — both present on virtually every Linux and macOS system. It's built on shellframe, a TUI framework for bash that provides screen management, keyboard routing, and component lifecycle. This isn't a wrapper around `dialog` or a pile of escape codes — it's a structured application that works on bash 3.2–5.x, including the macOS default shell.
+Body: No runtime dependencies beyond bash and sqlite3 — both available on most systems. Built on shellframe, a TUI framework for bash that provides screen management, keyboard routing, and component lifecycle. This isn't a wrapper around `dialog` — it's a structured application tested on bash 3.2–5.2 across macOS and Linux in CI.
 
 Code:
 ```bash
-# Install via Homebrew
 brew install fissible/tap/shellql
 ```
 
 ---
 
-### Features list (update existing)
+### OssPackage type changes
 
-Replace the current 4 bullets with:
-
-- Schema browser, table view, query tab, and record inspector
-- Full CRUD — insert, update, and delete rows with an intuitive UI
-- Works over SSH — no GUI, no port forwarding, just bash and sqlite3
-- Mouse and keyboard support; bash 3.2–5.x compatible
+```ts
+screenshots?: string[];   // optional, paths relative to /public
+```
 
 ---
 
@@ -95,37 +132,32 @@ Replace the current 4 bullets with:
 **New file:** `apps/site/src/components/AnnouncementBar.astro`  
 **Modified file:** `apps/site/src/pages/index.astro`
 
+### Copy (sharper, blunter)
+
+> **New:** ShellQL — SQLite workbench that runs over SSH (bash, no GUI) &nbsp;[→ /tools/shellql](/tools/shellql)
+
 ### Component
 
-A slim, full-width banner rendered above the Hero. Accent-colored background, single line of text with a link to `/tools/shellql`. No dismiss button (no localStorage/cookie complexity).
-
-Content:
-> **New:** ShellQL — a full SQLite workbench for the terminal, works over SSH. [Check it out →](/tools/shellql)
-
-Styling: thin strip (~40px height), centered text, accent background color, white/light text, small font size (~0.8rem).
-
-### index.astro change
-
-Add `<AnnouncementBar />` as the first element inside `<main>`, above `<Hero />`.
+Slim full-width strip above `<Hero />`. No dismiss button. Accent background, light text, ~0.8rem font, ~40px height. Internal link only (no external navigation).
 
 ---
 
 ## 3. Blog Post Outline (dev.to — not a site change)
 
-A draft outline is saved to `docs/shellql-blog-post-outline.md` for reference. Nothing is deployed to fissible.dev.
+Saved to `docs/shellql-blog-post-outline.md`. Nothing deployed to fissible.dev.
 
 **Title:** "Why I built a SQLite workbench in bash"
 
 **Structure:**
 
 1. **Hook** — You SSH into a server. The SQLite database is right there. Every GUI tool you own is useless.
-2. **The build** — What shellframe gave me, what I had to build on top of it, the surprising parts.
-3. **The SSH use case** — Why terminal-native matters for database tools specifically. Remote servers, Docker, CI.
-4. **Full CRUD** — Most TUI database tools are read-only. ShellQL isn't. Walk through insert/update/delete.
+2. **The build** — What shellframe gave me, what I had to build on top of it.
+3. **The SSH use case** — Why terminal-native matters for database tools specifically.
+4. **Full CRUD** — Most TUI database tools are read-only. ShellQL isn't.
 5. **Mouse support** — Unexpected in a bash tool. Why it matters for adoption.
-6. **Install and try it** — `brew install fissible/tap/shellql`, link to `/tools/shellql`, link to GitHub.
+6. **Install** — `brew install fissible/tap/shellql`, link to `/tools/shellql`, GitHub.
 
-**Post on:** dev.to (gets indexed, has its own developer audience, backlinks to fissible.dev)
+**Post on:** dev.to
 
 ---
 
@@ -135,6 +167,7 @@ A draft outline is saved to `docs/shellql-blog-post-outline.md` for reference. N
 - Changes to any other tool pages
 - Changes to the Station hero or WorkflowAnimation
 - ShellQL docs site updates
+- Strategic repositioning of fissible.dev (tools ecosystem vs. Station flagship — deferred)
 
 ---
 
@@ -142,7 +175,18 @@ A draft outline is saved to `docs/shellql-blog-post-outline.md` for reference. N
 
 | File | Change |
 |------|--------|
-| `apps/site/src/data/packages.ts` | Add `description` + `marketingSections` + update `features` for shellql entry |
+| `apps/site/src/data/packages.ts` | Update `shellql` entry: tagline, description, quickStart concept, features, marketingSections, screenshots array |
+| `apps/site/src/components/MarketingPage.astro` | Add screenshots rendering; promote install/GitHub to above-fold |
 | `apps/site/src/components/AnnouncementBar.astro` | New component |
 | `apps/site/src/pages/index.astro` | Add `<AnnouncementBar />` above `<Hero />` |
 | `docs/shellql-blog-post-outline.md` | New file — blog draft outline (not deployed) |
+
+---
+
+## Screenshot staging guide (for user)
+
+Capture these 3 terminal screenshots before implementation begins. Terminal: ~80 columns, dark background.
+
+1. **Schema browser** — 3–4 tables with realistic names (users, orders, products, sessions)
+2. **Table view** — 5–8 rows visible, mix of column types, filter UI visible if possible
+3. **Record inspector/edit** — single record open, form-style layout, ideally mid-edit

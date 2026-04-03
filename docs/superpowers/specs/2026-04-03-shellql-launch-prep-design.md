@@ -185,7 +185,7 @@ Saved to `docs/shellql-blog-post-outline.md`. Nothing deployed to fissible.dev.
 
 ## Screenshot staging guide (for user)
 
-Capture these 3 terminal screenshots before implementation begins. Terminal: ~80 columns, dark background.
+Capture these 3 terminal screenshots before implementation begins. Terminal: ~160 columns, dark background. 80 columns breaks the UI.
 
 1. **Schema browser** — 3–4 tables with realistic names (users, orders, products, sessions)
 2. **Table view** — 5–8 rows visible, mix of column types, filter UI visible if possible

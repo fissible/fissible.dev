@@ -1,6 +1,7 @@
 ---
 // apps/site/src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
 import Hero from '../components/Hero.astro';
 import WorkflowAnimation from '../components/WorkflowAnimation.astro';
 import UseCase from '../components/UseCase.astro';
@@ -9,6 +10,7 @@ import Ecosystem from '../components/Ecosystem.astro';
 import ConvergeCTA from '../components/ConvergeCTA.astro';
 ---
 <Layout title="fissible">
+  <AnnouncementBar />
   <main>
     <Hero />
     <WorkflowAnimation />

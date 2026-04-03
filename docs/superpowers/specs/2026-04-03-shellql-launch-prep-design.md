@@ -47,13 +47,18 @@ Sub-label under the block: `Works over SSH. No GUI. No port forwarding.`
 
 ### Visual proof section (new — between Section 1 and Section 2)
 
-Three screenshots displayed in sequence (or a single asciinema embed if a recording is produced later). User will provide screenshots staged as follows:
+Three screenshots committed to `public/screenshots/shellql/`:
 
-1. **Schema browser** — database with 3–4 real-looking tables (users, orders, products, etc.)
-2. **Table view** — paginated rows with visible filtering UI
-3. **Record inspector/edit** — single record open in form-style edit view
+1. `schema-browser.png` — 30+ table sidebar for `rosewood_and_vine.db`; keybindings at bottom
+2. `table-data-view.png` — `invoices` filtered to `status = overdue`, 9 rows, multi-tab UI visible, filter shown inline in tab bar
+3. `row-editor.png` — `customers` edit overlay; schema-aware (column types + NOT NULL constraints on right); cursor mid-edit
 
-Implementation: add an optional `screenshots: string[]` field to `OssPackage` (relative paths from `public/`). `MarketingPage` renders them in a row or stacked block with a plain label: "Schema browser · Table view · Record inspector."
+Additional UI details from screenshots to fold into copy:
+- Tab system: multiple tables open simultaneously
+- Edit form shows column types and constraints — it understands your schema
+- Keybindings self-document at the bottom of each screen
+
+Implementation: add an optional `screenshots: string[]` field to `OssPackage` (relative paths from `public/`). `MarketingPage` renders them stacked with a plain label: "Schema browser · Table view · Record editor."
 
 No marketing copy around the screenshots. Let the UI speak.
 
@@ -85,10 +90,10 @@ shql --connection production
 Title: `Browse, query, and mutate`
 
 Body: ShellQL has four screens:
-- **Schema browser** — tree-style navigation through tables and columns
-- **Table view** — paginated rows with filtering
+- **Schema browser** — list navigation through all tables and views
+- **Table view** — paginated rows with inline filtering; multiple tables open as tabs simultaneously
 - **Query tab** — raw SQL execution with results inline
-- **Record inspector** — form-style editing; insert, update, and delete are first-class
+- **Record editor** — form-style overlay; schema-aware (shows column types and constraints); insert, update, and delete are first-class
 
 Table creation uses a SQL query tab preloaded with a `CREATE TABLE` template, giving you full DDL control.
 

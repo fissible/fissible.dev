@@ -24,7 +24,7 @@ const { pkg } = Astro.props;
   )}
   {pkg.screenshots && pkg.screenshots.length > 0 && (
     <section class="marketing-screenshots">
-      <p class="screenshots-label">Schema browser · Table view · Record editor</p>
+      {pkg.screenshotsLabel && <p class="screenshots-label">{pkg.screenshotsLabel}</p>}
       <div class="screenshots-grid">
         {pkg.screenshots.map(src => (
           <img src={src} alt="" class="screenshot" loading="lazy" />

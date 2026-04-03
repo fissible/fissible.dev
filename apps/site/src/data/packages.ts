@@ -18,6 +18,7 @@ export interface OssPackage {
   githubUrl: string;
   features: [string, string, string, string];
   codeExample: string;
+  screenshotsLabel?: string;
   screenshots?: string[];
   suite: 'tui' | 'php';
   marketingSections?: MarketingSection[];

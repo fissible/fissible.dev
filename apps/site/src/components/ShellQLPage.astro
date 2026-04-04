@@ -1,0 +1,156 @@
+---
+// apps/site/src/components/ShellQLPage.astro
+import type { OssPackage } from '../data/packages';
+interface Props { pkg: OssPackage; }
+const { pkg } = Astro.props;
+
+const screenshots = [
+  { src: '/screenshots/shellql/fission1.png', caption: 'Jump between databases instantly' },
+  { src: '/screenshots/shellql/fission4.png', caption: 'Filter and scan large tables fast' },
+  { src: '/screenshots/shellql/fission5.png', caption: 'Edit rows with schema-aware fields' },
+];
+
+const features = [
+  { title: 'Do real work, not just read', body: 'Insert, update, delete. Most terminal tools stop at read-only.' },
+  { title: 'Built for remote environments', body: 'Run over SSH with zero setup. No tunnels, no file syncing.' },
+  { title: 'Multi-tab workflow', body: 'Open tables and queries side by side. Switch instantly with tabs and shortcuts.' },
+  { title: 'Mouse or keyboard', body: 'Use it like vim or like a GUI. Both paths work.' },
+];
+---
+<main class="shellql-page">
+
+  <!-- Hero -->
+  <header class="shellql-hero">
+    <div class="hero-headline-row">
+      <h1 class="hero-headline">SQLite workbench that runs over SSH</h1>
+      <img src="/shellql/SHellQL_SQLite_in_your_terminal.png" alt="ShellQL" class="hero-logo" />
+    </div>
+    <p class="hero-subhead">Browse tables, run queries, and edit rows directly on the server. No GUI. No port forwarding.</p>
+  </header>
+
+  <!-- Quick Install -->
+  <section class="shellql-install">
+    <pre class="install-code"><code>{pkg.install}
+shql my.db</code></pre>
+    <p class="install-meta">Runs on bash 3.2–5.2 (macOS + Linux)</p>
+    <p class="install-meta">No dependencies beyond sqlite3</p>
+    <div class="install-cta">
+      <a href={pkg.githubUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub ↗</a>
+      <a href={pkg.docsUrl} class="btn-secondary">View Docs</a>
+    </div>
+  </section>
+
+  <!-- Proof Strip -->
+  <section class="shellql-proof">
+    <div class="proof-grid">
+      {screenshots.map(({ src, caption }) => (
+        <div class="proof-item">
+          <img src={src} alt={caption} class="proof-img" loading="lazy" />
+          <p class="proof-caption">{caption}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Terminal Preview -->
+  <section class="shellql-preview">
+    <pre class="terminal-preview"><code><span class="term-prompt">&gt;</span> shql production.db
+
+[products] [orders] [+SQL]
+
+id  name                price
+1   Classic Bouquet     46.32
+2   Wildflower Mix      33.12
+
+<span class="term-hint">[Enter] Inspect   [f] Filter   [x] Export</span></code></pre>
+  </section>
+
+  <!-- Why This Exists -->
+  <section class="shellql-why">
+    <p>You SSH into a server. The SQLite database is right there — and every GUI tool you own stops working.</p>
+    <p>ShellQL lets you browse and edit it directly, without leaving the terminal.</p>
+  </section>
+
+  <!-- Feature Blocks -->
+  <section class="shellql-features">
+    {features.map(({ title, body }) => (
+      <div class="feature-block">
+        <h3 class="feature-title">{title}</h3>
+        <p class="feature-body">{body}</p>
+      </div>
+    ))}
+  </section>
+
+  <!-- Deep-Dive Sections -->
+  {pkg.marketingSections && pkg.marketingSections.length > 0 && (
+    <div class="shellql-sections">
+      {pkg.marketingSections.map(section => (
+        <section class="shellql-section">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+          {section.code && <pre><code>{section.code}</code></pre>}
+        </section>
+      ))}
+    </div>
+  )}
+
+  <!-- Bottom Install -->
+  <section class="shellql-install shellql-install--bottom">
+    <pre class="install-code"><code>{pkg.install}</code></pre>
+    <div class="install-cta">
+      <a href={pkg.githubUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub ↗</a>
+      <a href={pkg.docsUrl} class="btn-secondary">View Docs</a>
+    </div>
+  </section>
+
+</main>
+
+<style>
+.shellql-page { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 3.5rem; }
+
+/* Hero */
+.shellql-hero { max-width: 700px; }
+.hero-headline-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 1rem; }
+.hero-headline { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.hero-logo { height: 40px; width: auto; flex-shrink: 0; margin-top: 4px; }
+.hero-subhead { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 560px; }
+
+/* Install */
+.shellql-install { display: flex; flex-direction: column; gap: 0.4rem; max-width: 480px; }
+.install-code { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.875rem; color: var(--accent); white-space: pre; }
+.install-meta { font-size: 0.82rem; color: var(--text-muted); }
+.install-cta { display: flex; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap; }
+
+/* Proof strip */
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.proof-item { display: flex; flex-direction: column; gap: 0.5rem; }
+.proof-img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); display: block; }
+.proof-caption { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+@media (max-width: 768px) { .proof-grid { grid-template-columns: 1fr; } }
+
+/* Terminal preview */
+.shellql-preview { max-width: 560px; }
+.terminal-preview { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.7; color: var(--text); overflow-x: auto; }
+.term-prompt { color: var(--accent); }
+.term-hint { color: var(--text-muted); }
+
+/* Why */
+.shellql-why { max-width: 600px; display: flex; flex-direction: column; gap: 0.5rem; }
+.shellql-why p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+
+/* Feature blocks */
+.shellql-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.feature-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+.feature-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.feature-body { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
+@media (max-width: 600px) { .shellql-features { grid-template-columns: 1fr; } }
+
+/* Deep-dive sections */
+.shellql-sections { display: flex; flex-direction: column; gap: 2.5rem; }
+.shellql-section h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.75rem; }
+.shellql-section p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; max-width: 600px; margin-bottom: 1rem; }
+.shellql-section pre { margin-top: 0; }
+
+/* Bottom install modifier */
+.shellql-install--bottom { border-top: 1px solid var(--border); padding-top: 3rem; }
+</style>

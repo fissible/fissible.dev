@@ -54,15 +54,7 @@ shql my.db</code></pre>
 
   <!-- Terminal Preview -->
   <section class="shellql-preview">
-    <pre class="terminal-preview"><code><span class="term-prompt">&gt;</span> shql production.db
-
-[products] [orders] [+SQL]
-
-id  name                price
-1   Classic Bouquet     46.32
-2   Wildflower Mix      33.12
-
-<span class="term-hint">[Enter] Inspect   [f] Filter   [x] Export</span></code></pre>
+    <img src="/shellql/demo.gif" alt="ShellQL demo — browse tables, filter rows, inspect records" class="demo-gif" />
   </section>
 
   <!-- Why This Exists -->
@@ -129,10 +121,8 @@ id  name                price
 @media (max-width: 768px) { .proof-grid { grid-template-columns: 1fr; } }
 
 /* Terminal preview */
-.shellql-preview { max-width: 560px; }
-.terminal-preview { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.7; color: var(--text); overflow-x: auto; }
-.term-prompt { color: var(--accent); }
-.term-hint { color: var(--text-muted); }
+.shellql-preview { max-width: 800px; }
+.demo-gif { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); display: block; }
 
 /* Why */
 .shellql-why { max-width: 600px; display: flex; flex-direction: column; gap: 0.5rem; }

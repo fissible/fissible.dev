@@ -1,9 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ComingSoonPage from '../../components/ComingSoonPage.astro';
+import StationPage from '../../components/StationPage.astro';
 import { paidProducts } from '../../data/packages';
 const product = paidProducts.find(p => p.slug === 'station')!;
 ---
-<Layout title={product.name} description={product.description}>
-  <ComingSoonPage product={product} formspreeId={product.formspreeId} />
+<Layout
+  title="Station"
+  description="Self-hosted Laravel CMS with enforced approval workflows. Multi-tenant, versioned, scheduled publishing. One-time per-site license."
+>
+  <StationPage product={product} />
 </Layout>

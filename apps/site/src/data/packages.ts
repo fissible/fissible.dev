@@ -31,6 +31,11 @@ export interface PaidProduct {
   description: string;
   status: 'coming-soon' | 'purchase-pending';
   formspreeId: string;
+  features?: Array<{ title: string; body: string }>;
+  marketingSections?: MarketingSection[];
+  screenshots?: Array<{ src: string; caption: string }>;
+  screenshotsLabel?: string;
+  pricingNote?: string;
 }
 
 export const tuiPackages: OssPackage[] = [
@@ -318,11 +323,39 @@ export const paidProducts: PaidProduct[] = [
   },
   {
     slug: 'station',
-    name: 'station',
-    tagline: 'A self-hosted Laravel CMS platform',
-    description: 'Schema-driven content types, a Draft→Review→Published approval workflow, and a browser-based installer. One-time per-site license.',
+    name: 'Station',
+    tagline: 'The Laravel CMS that enforces approval before anything goes live.',
+    description: 'Self-hosted on your infrastructure. Filament v5 admin. Multi-tenant. One-time per-site license.',
     status: 'coming-soon',
     formspreeId: 'mojpvkrq',
+    pricingNote: 'No subscriptions. No SaaS. Runs on your server.',
+    screenshotsLabel: 'Approval queue · Content editor · Site switcher',
+    features: [
+      { title: 'Approval is not optional', body: 'Draft → Submit → Approve → Publish. Every piece of content must pass through an approver before it goes live. There is no "publish directly" shortcut.' },
+      { title: 'Versioned by default', body: 'Every save creates a version. Roll back any content item to any previous state. Auditors can see exactly what changed, when, and who changed it.' },
+      { title: 'Schedule without risk', body: 'Set a future publish date on approved content. Nothing can be scheduled that hasn\'t been approved. The scheduling system respects the workflow, not the other way around.' },
+      { title: 'Multi-tenant from the start', body: 'Run multiple sites from a single Station install. Each site has its own content, its own users, and its own approval chain. No cross-site leakage.' },
+      { title: 'Self-hosted, your data', body: 'Station runs on your server, in your infrastructure. No third-party SaaS in the content path. Your content, your database, your control.' },
+      { title: 'Built on Filament v5', body: 'Laravel developers already know the admin conventions. Station extends Filament — familiar panels, familiar form components, extensible with standard Filament plugins.' },
+    ],
+    marketingSections: [
+      {
+        title: 'The problem with every other CMS',
+        body: 'WordPress, Statamic, and most headless CMSs treat publishing as a permission problem: add a role, restrict the button. But roles are misconfigured. Editors get promoted. People click publish when they meant to save a draft. Station treats publishing as a workflow problem: the only way content reaches production is if an approver signed off on it. There is no other path.',
+      },
+      {
+        title: 'Who uses this',
+        body: 'Financial advisors and wealth management firms where compliance reviews every client communication. Law firms where content must be reviewed before publication. Healthcare providers under HIPAA marketing constraints. Any editorial team where "I thought it was approved" is not an acceptable post-mortem.',
+      },
+      {
+        title: 'What v1 ships with',
+        body: 'RichEditor content types. Draft → Submit → Approve → Publish workflow enforced at the model layer. Content versioning with rollback. Scheduled publishing (post-approval only). Multi-tenant architecture with isolated site contexts. Audit log. Filament v5 admin panel. Browser-based installer.',
+      },
+      {
+        title: 'One-time license, no subscriptions',
+        body: 'Station is not SaaS. You buy a per-site license, deploy it to your own server, and own it. No monthly fees. No data leaving your infrastructure. No vendor lock-in on your content pipeline.',
+      },
+    ],
   },
   {
     slug: 'conduit',

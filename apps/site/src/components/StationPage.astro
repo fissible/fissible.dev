@@ -1,0 +1,164 @@
+---
+// apps/site/src/components/StationPage.astro
+import type { PaidProduct } from '../data/packages';
+interface Props { product: PaidProduct; }
+const { product } = Astro.props;
+
+const workflowSteps = ['Draft', 'Submit', 'Approve', 'Publish', 'Audit Log'];
+---
+<main class="station-page">
+
+  <!-- Hero -->
+  <header class="station-hero">
+    <h1 class="station-headline">The CMS that enforces approval before anything goes live.</h1>
+    <p class="station-subhead">Self-hosted on your infrastructure. Multi-tenant. Built on Laravel and Filament.</p>
+    <div class="station-badges">
+      <span class="badge">Self-Hosted</span>
+      <span class="badge">Laravel + Filament v5</span>
+      <span class="badge">One-time license</span>
+    </div>
+    <div class="station-cta">
+      <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+      <a href="#how-it-works" class="btn-secondary">See how it works ↓</a>
+    </div>
+  </header>
+
+  <!-- Workflow Steps -->
+  <section class="station-workflow" id="how-it-works">
+    <p class="workflow-label">Nothing goes live without approval</p>
+    <div class="workflow-steps">
+      {workflowSteps.map((step, i) => (
+        <div class="workflow-item">
+          <span class={`workflow-step${step === 'Approve' ? ' workflow-step--accent' : ''}`}>{step}</span>
+          {i < workflowSteps.length - 1 && <span class="workflow-arrow">→</span>}
+        </div>
+      ))}
+    </div>
+    <p class="workflow-note">Enforced at the model layer, not just a UI permission.</p>
+  </section>
+
+  <!-- Screenshot Strip (only renders when screenshots exist) -->
+  {product.screenshots && product.screenshots.length > 0 && (
+    <section class="station-proof">
+      {product.screenshotsLabel && <p class="proof-label">{product.screenshotsLabel}</p>}
+      <div class="proof-grid">
+        {product.screenshots.map(({ src, caption }) => (
+          <div class="proof-item">
+            <img src={src} alt={caption} class="proof-img" loading="lazy" />
+            <p class="proof-caption">{caption}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Feature Grid -->
+  {product.features && product.features.length > 0 && (
+    <section class="station-features">
+      {product.features.map(({ title, body }) => (
+        <div class="feature-block">
+          <h3 class="feature-title">{title}</h3>
+          <p class="feature-body">{body}</p>
+        </div>
+      ))}
+    </section>
+  )}
+
+  <!-- Deep-Dive Sections -->
+  {product.marketingSections && product.marketingSections.length > 0 && (
+    <div class="station-sections">
+      {product.marketingSections.map(section => (
+        <section class="station-section">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </section>
+      ))}
+    </div>
+  )}
+
+  <!-- Use-Case Callout -->
+  <section class="station-usecase">
+    <div class="usecase-inner">
+      <h2 class="usecase-heading">Built for teams where approval is mandatory, not optional</h2>
+      <ul class="usecase-list">
+        <li>Compliance officer must approve before any content reaches clients</li>
+        <li>Nothing can be scheduled without prior approval</li>
+        <li>Every version is retained — who changed what, and when</li>
+        <li>Runs on your own server, under your own infrastructure</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Waitlist Form -->
+  <section class="station-waitlist" id="waitlist">
+    <h2 class="waitlist-heading">Station is launching soon.</h2>
+    <p class="waitlist-sub">Be the first to try it. Get notified when v1 ships.</p>
+    <form
+      class="waitlist-form"
+      action={`https://formspree.io/f/${product.formspreeId}`}
+      method="POST"
+    >
+      <input type="email" name="email" placeholder="your@email.com" required />
+      <input type="hidden" name="product" value={product.slug} />
+      <button type="submit">Notify me</button>
+    </form>
+    {product.pricingNote && <p class="pricing-note">{product.pricingNote}</p>}
+  </section>
+
+</main>
+
+<style>
+.station-page { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem; display: flex; flex-direction: column; gap: 3.5rem; }
+
+/* Hero */
+.station-hero { max-width: 700px; display: flex; flex-direction: column; gap: 1.25rem; }
+.station-headline { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.station-subhead { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 560px; }
+.station-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.badge { font-size: 0.75rem; font-weight: 600; border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.75rem; color: var(--text-muted); }
+.station-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* Workflow */
+.station-workflow { max-width: 700px; }
+.workflow-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem; }
+.workflow-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+.workflow-item { display: flex; align-items: center; gap: 0.5rem; }
+.workflow-step { font-size: 0.9rem; font-weight: 600; color: var(--text); background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.35rem 0.75rem; }
+.workflow-step--accent { border-color: var(--accent); color: var(--accent); }
+.workflow-arrow { color: var(--text-muted); font-size: 0.8rem; }
+.workflow-note { font-size: 0.82rem; color: var(--text-muted); }
+
+/* Proof strip */
+.station-proof { display: flex; flex-direction: column; gap: 0.75rem; }
+.proof-label { font-size: 0.75rem; color: var(--text-muted); }
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.proof-item { display: flex; flex-direction: column; gap: 0.5rem; }
+.proof-img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); display: block; }
+.proof-caption { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+@media (max-width: 768px) { .proof-grid { grid-template-columns: 1fr; } }
+
+/* Feature grid */
+.station-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.feature-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+.feature-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.feature-body { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
+@media (max-width: 600px) { .station-features { grid-template-columns: 1fr; } }
+
+/* Deep-dive sections */
+.station-sections { display: flex; flex-direction: column; gap: 2.5rem; }
+.station-section h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.75rem; }
+.station-section p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; max-width: 600px; }
+
+/* Use-case callout */
+.station-usecase { border-left: 2px solid var(--accent); padding-left: 1.5rem; max-width: 560px; }
+.usecase-heading { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; }
+.usecase-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.usecase-list li { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; padding-left: 1rem; position: relative; }
+.usecase-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+
+/* Waitlist */
+.station-waitlist { border-top: 1px solid var(--border); padding-top: 3rem; display: flex; flex-direction: column; gap: 1rem; max-width: 560px; }
+.waitlist-heading { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+.waitlist-sub { font-size: 0.9rem; color: var(--text-muted); }
+.pricing-note { font-size: 0.8rem; color: var(--text-muted); }
+</style>

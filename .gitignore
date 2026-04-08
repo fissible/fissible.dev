@@ -9,3 +9,5 @@ dist/
 .superpowers/
 .tome.db
 .worktrees/
+.tome.db-shm
+.tome.db-wal

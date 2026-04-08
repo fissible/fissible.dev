@@ -15,6 +15,7 @@ export default defineConfig({
         SiteTitle: './src/overrides/SiteTitle.astro',
       },
       sidebar: [
+        { label: 'station',    autogenerate: { directory: 'station' } },
         { label: 'shellframe', autogenerate: { directory: 'shellframe' } },
         { label: 'seed',       autogenerate: { directory: 'seed' } },
         { label: 'ptyunit',    autogenerate: { directory: 'ptyunit' } },

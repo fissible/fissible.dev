@@ -24,7 +24,7 @@ Registered modules automatically receive sidebar navigation, global search integ
 
 ### Roles and permissions
 
-Station uses [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission) for role-based access.
+Station uses [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission) for role-based access. See [Roles & Permissions](/station/roles-permissions/) for the full hierarchy and authorization model.
 
 | Role | Scope | Description |
 |------|-------|-------------|
@@ -32,8 +32,6 @@ Station uses [Spatie Laravel Permission](https://spatie.be/docs/laravel-permissi
 | Admin | Tenant | Full control within a single tenant |
 | Editor | Tenant | Create and edit content, submit for review |
 | Viewer | Tenant | Read-only access to content |
-
-Custom roles can be created per tenant with granular permissions.
 
 ### Admin panels
 
@@ -46,133 +44,45 @@ Station provides two Filament panels:
 
 ### Content types
 
-Content types define the schema for entries. Each content type specifies:
-
-- Fields (text, rich text, media, relationships, etc.)
-- Validation rules
-- Display configuration
+Content types define the schema for entries — field definitions, routing, templates, and workflow assignment. See [Content Types](/station/content-types/) for the full reference including all field types and configuration options.
 
 ### Entries
 
 Entries are instances of a content type. Features include:
 
-- Full version history with diff view
+- Full version history with diff view — see [Entry Versioning](/station/entry-versioning/)
 - Draft / published / archived status
 - Slug generation and SEO metadata
 - Media attachments via Spatie Media Library
-
-#### Entry versioning
-
-When a published entry is edited, Station creates a **draft fork** rather than modifying the live entry directly. The fork references the canonical entry via `version_of_id`, and a unique constraint ensures only one draft fork exists per entry at a time.
-
-Draft forks go through the workflow (review or hotfix) before being merged back into the canonical entry. Each merge creates an **entry commit** — a snapshot of the entry's data, slug, and hierarchy for audit and rollback purposes.
-
-Key operations:
-
-- **Fork for editing** — race-safe via database transactions and unique constraint
-- **Commit history** — browse prior versions and rollback to any commit
-- **Rollback** — restores entry data, handles slug collisions, and deletes any active fork
-
-#### Hotfix workflow
-
-For urgent changes, editors can submit a draft fork as a **hotfix**. Hotfix entries bypass the standard review queue and route directly to super admins for approval. Only super admins can approve (publish) or reject (return to draft) a hotfix.
-
-#### Content scheduling
-
-Entries support two scheduling fields:
-
-- **Embargo (`embargo_at`)** — the entry is published but hidden from delivery until the embargo date passes
-- **Expiration (`expire_at`)** — the entry is automatically hidden after the expiration date
-
-Scheduling is opt-in per content type (`scheduling_enabled`). Dates respect the site timezone configured in Site Settings. The `deliverable` scope on the Entry model filters out embargoed and expired entries automatically.
+- Embargo and expiration scheduling — see [Content Scheduling](/station/content-scheduling/)
 
 ### Menus
 
-Menus are managed through a drag-and-drop builder powered by a Livewire `DraggableTree` component. Each menu has a `handle` (used in templates) and a configurable `max_depth` (default 4).
-
-#### Menu item types
-
-Menu items use a driver pattern. Each type implements the `MenuItemTypeDriver` contract:
-
-| Type | Description |
-|------|-------------|
-| External | Link to an external URL (configurable target: self or blank) |
-| Entry | Link to a specific published entry |
-| Listing | Expands to recent entries of a content type |
-| Placeholder | Dynamic expansion — child pages, pages under a root slug, or content type listings |
-
-Listing and placeholder items are **expanding** drivers — they resolve to multiple nodes at render time. The `MenuRenderer` service handles expansion, preloading entries and pages efficiently.
-
-#### Role-based visibility
-
-Each menu item can set a `required_role_level` (1–5). Items are filtered at render time based on the viewer's role level:
-
-| Level | Role |
-|-------|------|
-| 1 | Reviewer |
-| 2 | Author |
-| 3 | Editor |
-| 4 | Admin |
-| 5 | Super Admin |
-
-Items with no required level are visible to all visitors.
-
-#### Protected menus
-
-The `primary` and `secondary` menu handles are protected and cannot be deleted.
+Menus are managed through a drag-and-drop builder with four item type drivers (External, Entry, Listing, Placeholder). See [Menus](/station/menus/) for the full reference.
 
 ### SEO and sitemaps
 
-Each entry supports meta title, description, and Open Graph fields. Sitemaps are generated automatically based on published entries.
+Each entry supports meta title, description, and Open Graph fields. Sitemaps are generated automatically based on published entries. See [Frontend & Theming](/station/frontend-theming/) for SEO resolution details.
 
 ## Flow Module
 
-The Flow module provides a workflow engine for content lifecycle management. Flows are defined as step sequences with conditions, approvals, and automated actions.
+The Flow module provides a workflow engine for content lifecycle management. Flows are defined as step sequences with conditions, approvals, and automated actions. See [Workflows](/station/workflows/) for the full reference.
+
+## Multi-tenancy
+
+Station uses a tenant-per-row model with automatic query scoping via global scopes. See [Multi-Tenancy](/station/multi-tenancy/) for tenant resolution, domain mapping, and membership details.
 
 ## Maintenance mode
 
-Each tenant can toggle maintenance mode from Site Settings. When enabled, the `EnforceMaintenanceMode` middleware returns a 503 response with a custom HTML message to unauthenticated visitors. Authenticated users bypass maintenance mode entirely.
-
-Maintenance mode is per-tenant — each tenant's `SiteSettings` stores its own `maintenance_mode` flag and `maintenance_html` content.
+Each tenant can toggle maintenance mode independently, returning 503 to unauthenticated visitors. See [Maintenance Mode](/station/maintenance-mode/).
 
 ## Account self-service
 
-Users manage their own accounts from the profile settings page.
-
-### Password and authentication
-
-- Password changes via the standard Filament profile form
-- **TOTP two-factor authentication** — users can enable app-based 2FA through Filament's built-in MFA UI. The TOTP secret is stored on the user model.
-
-### Avatar
-
-User avatars are stored via Spatie Media Library in the `avatar` collection on the `public` disk.
-
-### Notification preferences
-
-Users can opt out of specific notification types (e.g., `submitted_for_review`, `entry_published`). Preferences are stored as a JSON array on the user model. All notifications default to enabled.
-
-### Account deletion (anonymization)
-
-Users can delete their own account from the profile page. This requires password confirmation and triggers the `AnonymizeUser` service, which:
-
-- Replaces the email with `anonymized+{uuid}@deleted.invalid` and randomizes the password
-- Revokes all tenant memberships and role assignments
-- Invalidates all active sessions
-- Sets an `anonymized_at` timestamp
-- Retains the user's name and authored content for audit purposes
-
-A safety guard prevents deletion if the user is the only super admin in any tenant.
+Users manage passwords, 2FA, avatars, notification preferences, and account deletion from the profile page. See [Account Self-Service](/station/account-self-service/).
 
 ## Editorial context bar
 
-Authenticated users see a compact navigation bar at the top of every page. The context bar provides:
-
-- Quick navigation between frontend, admin panel, and platform panel (based on the user's role)
-- Environment indicator — color-coded by environment (red for production, orange for staging, green for local)
-- Extension points via Blade stacks (`context-bar-status` and `context-bar-actions`) for status indicators and quick actions
-
-The bar is only visible to authenticated users and adapts its links based on role: editors see a link to the admin panel, platform admins see links to both admin and platform panels.
+Authenticated users see a compact navigation bar at the top of every page with environment indicator, role-based navigation links, and extension stacks. See [Frontend & Theming](/station/frontend-theming/) for details.
 
 ## Media
 

@@ -31,6 +31,7 @@ export interface PaidProduct {
   description: string;
   status: 'coming-soon' | 'purchase-pending';
   formspreeId: string;
+  docsUrl?: string;
   features?: Array<{ title: string; body: string }>;
   marketingSections?: MarketingSection[];
   screenshots?: Array<{ src: string; caption: string }>;
@@ -328,6 +329,7 @@ export const paidProducts: PaidProduct[] = [
     description: 'Self-hosted on your infrastructure. Filament v5 admin. Multi-tenant. One-time per-site license.',
     status: 'coming-soon',
     formspreeId: 'mojpvkrq',
+    docsUrl: 'https://docs.fissible.dev/station/',
     pricingNote: 'No subscriptions. No SaaS. Runs on your server.',
     screenshotsLabel: 'Approval queue · Content editor · Site switcher',
     features: [

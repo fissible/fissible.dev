@@ -19,6 +19,7 @@ const workflowSteps = ['Draft', 'Submit', 'Approve', 'Publish', 'Audit Log'];
     </div>
     <div class="station-cta">
       <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+      {product.docsUrl && <a href={product.docsUrl} class="btn-secondary">View Docs</a>}
       <a href="#how-it-works" class="btn-secondary">See how it works ↓</a>
     </div>
   </header>

@@ -12,7 +12,7 @@ Station's module system lets you extend the platform with optional features. Mod
 Station has two types of modules:
 
 - **Built-in modules** (CMS, Flow, Forms) — always available, ship with Station
-- **External modules** (Watch, Fault, and custom) — installed via Composer, managed through the admin UI or CLI
+- **External modules** — installed via Composer, managed through the admin UI or CLI
 
 External modules follow a full lifecycle: install, configure, upgrade, uninstall. Each module can provide its own database migrations, permissions, Filament UI, and configuration.
 
@@ -92,18 +92,11 @@ php artisan station:module:sync
 
 Updates `compose.yaml` with volume mounts and `composer.json` with path repositories for local fissible packages. Useful during development.
 
-## Available external modules
-
-| Module | Key | Package | Description | Depends on |
-|--------|-----|---------|-------------|------------|
-| **Watch** | `watch` | `fissible/watch` | API cockpit, route browser, drift detection | — |
-| **Fault** | `fault` | `fissible/fault` | Exception tracking and triage | Watch |
-
 ## Module lifecycle
 
 ### Installation
 
-Modules install in dependency order — if Fault depends on Watch, Watch installs first. Each step is tracked in the database, so a failed installation can be retried from where it left off.
+Modules install in dependency order — dependencies are resolved and installed first automatically. Each step is tracked in the database, so a failed installation can be retried from where it left off.
 
 ### Upgrades
 
@@ -127,7 +120,7 @@ Modules uninstall in reverse dependency order — dependents are removed before 
 
 ## Permissions
 
-Each module owns a permission namespace matching its key. For example, the Fault module defines `fault.view`, `fault.manage`, and `fault.resolve`. Permissions are provisioned during installation and assigned to roles according to the module's default mapping.
+Each module owns a permission namespace matching its key (e.g., a module with key `analytics` would define `analytics.view`, `analytics.manage`, etc.). Permissions are provisioned during installation and assigned to roles according to the module's default mapping.
 
 Permission assignments are only set on first creation. If a tenant admin later customizes role-permission assignments, module upgrades will not overwrite those changes.
 

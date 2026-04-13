@@ -24,14 +24,7 @@ Station is a self-hosted CMS and workflow platform built on Laravel 12. Create c
 | **Flow** | Workflow engine for content review, hotfix approval, notifications, and holds |
 | **Forms** | Form builder with submissions, spam defense, and automation integration |
 
-### External modules
-
-| Module | Package | Description |
-|--------|---------|-------------|
-| **Watch** | `fissible/watch` | API cockpit, route browser, drift detection |
-| **Fault** | `fissible/fault` | Exception tracking and triage |
-
-See [Modules](/station/modules/) for the full module system documentation.
+See [Modules](/station/modules/) for extending Station with custom modules.
 
 ## Architecture
 

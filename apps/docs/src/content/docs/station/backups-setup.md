@@ -1,6 +1,8 @@
 ---
 title: Setting Up Backups
 description: How to enable, configure, and verify Station's automated backup system.
+sidebar:
+  order: 71
 ---
 
 This guide walks through enabling backups, tuning the schedule and retention settings, running backups manually, and restoring from a backup. By the end you should have automated backups running on a schedule with no further intervention.

@@ -1,9 +1,13 @@
 ---
 title: Roles & Permissions
 description: Tenant-scoped role hierarchy, authorization rules, admin minting, and Spatie Permission integration.
+sidebar:
+  order: 41
 ---
 
-Station uses [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission) with **teams mode** enabled, where each tenant maps to a Spatie team. Roles are scoped per-tenant — a user can be an `editor` in one tenant and a `super_admin` in another.
+Station has five built-in roles arranged in a strict hierarchy. Each role inherits the capabilities of those below it. Roles are scoped per-tenant — a user can be an `editor` in one tenant and a `super_admin` in another.
+
+The role system is built on [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission) with **teams mode** enabled, where each tenant maps to a Spatie team.
 
 ## Role hierarchy
 

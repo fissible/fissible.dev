@@ -1,9 +1,15 @@
 ---
 title: Backup & Restore
 description: Tiered backup system with self-service restore, manifest-based media verification, and logarithmic retention.
+sidebar:
+  order: 70
 ---
 
-Station includes a built-in backup and restore system designed for self-hosted environments. Backups are self-contained snapshots — each one is independently restorable with no chaining or dependencies on other backups.
+Station includes a built-in backup and restore system. Backups run on a schedule, age through retention tiers (keeping recent backups dense and old ones sparse), and can be restored from the admin panel or CLI. Tenant admins can self-service restore from the last 48 hours; platform admins can restore from any point.
+
+If you just want to get backups running, start with [Setting Up Backups](/station/backups-setup/). This page covers the full system architecture.
+
+Backups are self-contained snapshots — each one is independently restorable with no chaining or dependencies on other backups.
 
 ## Backup types
 

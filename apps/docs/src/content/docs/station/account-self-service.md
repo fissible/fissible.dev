@@ -1,6 +1,8 @@
 ---
 title: Account Self-Service
 description: User account management features including password changes, two-factor authentication, avatar uploads, notification preferences, and account deletion.
+sidebar:
+  order: 42
 ---
 
 Station provides self-service account management from the profile settings page in the admin panel. Users can update their password, enable two-factor authentication, upload an avatar, configure notification preferences, and delete their account.

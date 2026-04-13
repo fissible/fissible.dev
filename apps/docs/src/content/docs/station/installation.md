@@ -1,6 +1,8 @@
 ---
 title: Installation
 description: How to install and configure Station for local development or production deployment.
+sidebar:
+  order: 1
 ---
 
 Station is a self-hosted CMS built on Laravel 12 and PHP 8.2. This guide covers everything from cloning the repo to verifying your first login.

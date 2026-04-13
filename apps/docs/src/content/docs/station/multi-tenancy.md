@@ -1,7 +1,13 @@
 ---
 title: Multi-Tenancy
 description: Tenant-per-row architecture with automatic query scoping, domain resolution, and per-tenant permissions.
+sidebar:
+  order: 50
 ---
+
+Station supports running multiple independent sites from a single installation. Each tenant gets its own content, users, menus, and configuration — completely isolated from other tenants while sharing the same codebase and database.
+
+For single-site installations, the default tenant is created during setup and you don't need to think about tenancy at all.
 
 Station uses a **tenant-per-row** model where all tenants share the same database. Tenant isolation is enforced through global query scopes and middleware-driven context resolution.
 

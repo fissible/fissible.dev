@@ -1,6 +1,8 @@
 ---
 title: Entry Versioning
 description: Draft fork model, commit history, rollback, and hotfix workflow for safe content editing.
+sidebar:
+  order: 14
 ---
 
 Station uses a **draft fork model** for versioning. Editing a published entry creates a separate draft record rather than modifying the live entry. This keeps the published version stable while changes are prepared, reviewed, and merged.

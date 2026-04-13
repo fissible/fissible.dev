@@ -1,6 +1,8 @@
 ---
 title: Configuration
 description: Comprehensive reference for all environment variables and configuration options in Station.
+sidebar:
+  order: 2
 ---
 
 Station is configured primarily through environment variables in the `.env` file. This page documents every supported variable organized by category.

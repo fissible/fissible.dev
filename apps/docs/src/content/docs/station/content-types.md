@@ -1,6 +1,8 @@
 ---
 title: Content Types
 description: Schema definitions for entries — field types, route patterns, templates, and content type configuration.
+sidebar:
+  order: 10
 ---
 
 Content types define the schema and behavior for entries in Station. Each content type describes what fields an entry has, how it routes on the frontend, which template renders it, and what features (scheduling, workflow, API) are enabled.

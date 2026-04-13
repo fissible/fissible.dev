@@ -1,6 +1,8 @@
 ---
 title: Users & Invitations
 description: User accounts, tenant memberships, invitation flow, account self-service, and platform admin behavior.
+sidebar:
+  order: 40
 ---
 
 Station separates **user accounts** (global) from **tenant memberships** (per-tenant). A single user can belong to multiple tenants, each with a different role. All user additions require consent through an invitation flow — there is no direct "add user" action.

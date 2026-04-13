@@ -1,6 +1,8 @@
 ---
 title: Content Scheduling
 description: Embargo and expiration dates for timed content delivery, with automatic visibility filtering.
+sidebar:
+  order: 13
 ---
 
 Content scheduling lets editors set embargo and expiration dates on entries for timed content delivery. Embargoed entries remain hidden until a future date; expired entries are automatically hidden after a date passes.

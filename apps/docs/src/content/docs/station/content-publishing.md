@@ -1,9 +1,13 @@
 ---
 title: Content Publishing
 description: Entry lifecycle from draft through review to publishing, including versioning, draft forks, commit history, scheduling, and hotfix workflow.
+sidebar:
+  order: 12
 ---
 
-Station uses a **draft fork** model for content publishing. When a published entry is edited, the system creates a separate draft that goes through review before replacing the live version. Every publish creates an append-only commit snapshot, enabling rollback to any prior state.
+This page covers the full content lifecycle — from creating a draft through review to publishing, and everything that happens along the way (versioning, scheduling, hotfix approval).
+
+For the short version: new entries start as drafts, go through an optional review workflow, and publish. Editing a published entry creates a safe draft copy (a "fork") so the live version stays untouched until the edit is approved.
 
 ## Entry lifecycle
 

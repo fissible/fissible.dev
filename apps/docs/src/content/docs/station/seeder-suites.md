@@ -1,6 +1,8 @@
 ---
 title: Seeder Suites
 description: Industry-specific content presets for quick demos and starting points, with seed and delete operations managed through the platform panel.
+sidebar:
+  order: 80
 ---
 
 Seeder suites are industry-specific content presets that populate a tenant with realistic content types, entries, and page hierarchies. They are designed for quick demos and as starting points for new sites.

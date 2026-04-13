@@ -1,6 +1,8 @@
 ---
-title: Frontend Theming
+title: Frontend & Theming
 description: Theme-based frontend rendering with pluggable templates, editorial tools, SEO resolution, and sitemap generation.
+sidebar:
+  order: 60
 ---
 
 Station's frontend uses a theme-based rendering system with pluggable templates, an editorial context bar for authenticated users, SEO resolution, and automatic sitemap generation.

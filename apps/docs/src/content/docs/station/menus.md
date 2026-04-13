@@ -1,6 +1,8 @@
 ---
 title: Menus
 description: Named menus with nested items, drag-and-drop ordering, driver-based item types, and role-based visibility.
+sidebar:
+  order: 30
 ---
 
 Station's menu builder provides named, hierarchical menus with configurable item types and role-based visibility. Menus are tenant-scoped and managed through a drag-and-drop admin interface.
@@ -90,6 +92,8 @@ When set, the item (and its children) is only visible to users with that role le
 Filtering happens at render time in the `MenuRenderer` service.
 
 ## Admin UI
+
+![Menu builder showing drag-and-drop tree with Placeholder and External item types](/station/menu-builder.png)
 
 Menu management uses a **DraggableTree** Livewire component powered by SortableJS:
 

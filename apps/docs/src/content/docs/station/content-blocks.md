@@ -1,23 +1,57 @@
 ---
 title: Content Blocks
 description: Block-based content editing system using Filament Builder, a PHP registry, and JSON storage within existing entry data.
+sidebar:
+  order: 11
 ---
 
-The Content Blocks system provides a block-based content editing experience within Station's dynamic fields framework. It uses Filament's Builder component and a PHP `ContentBlockRegistry` to define reusable block types.
+Content blocks provide a block-based editing experience for building rich page layouts. Instead of a single rich text field, editors compose content from discrete blocks — text, images, callouts, embeds, and more — each with its own settings and frontend rendering.
 
-Blocks are stored as JSON in the `entries.data` column — no additional migrations, tables, or columns required.
+## Using content blocks
 
-## Architecture
+To use blocks in a content type, add a field with type `content_blocks`. In the entry editor, this renders as a block editor with drag-and-drop reordering, collapsible sections, and per-block configuration forms.
 
-The system has three components:
+![Content block editor showing Embed, Pull Quote, and Text blocks with theme and width settings](/station/content-blocks-editor.png)
 
-1. **Field type** — a `content_blocks` field in the content type's fields array, rendered via Filament Builder
-2. **Block registry** — `ContentBlockRegistry` maps block type keys to PHP classes
-3. **Block contract** — `ContentBlock` abstract class defines schema, rendering, and base fields for each block
+Each block has two shared settings:
+- **Theme** — `light`, `dark`, or `brand`
+- **Width** — `full`, `contained` (max 720px), or `narrow` (max 540px)
 
-### Storage format
+Content types can restrict which blocks are available using the `allowed_blocks` option. At most one `content_blocks` field is allowed per content type.
 
-Blocks are saved as JSON in `entries.data`:
+## Available block types
+
+| Block | Type key | Description |
+|-------|----------|-------------|
+| **Text** | `text` | Rich text content |
+| **Image** | `image` | Image with alt text and optional caption |
+| **Callout** | `callout` | Highlighted message or tip |
+| **Pull Quote** | `pull_quote` | Standalone quotation |
+| **Embed** | `embed` | External content (video, widget, code) |
+| **CTA** | `cta` | Call-to-action with heading, text, and button |
+| **Form** | `form` | Embedded form from the [Forms](/station/forms/) module |
+
+Each block defines its own form fields in the admin and renders via a dedicated Blade view on the frontend.
+
+## Restricting blocks per content type
+
+Content types can limit which blocks are available:
+
+```json
+{
+  "name": "content_blocks",
+  "label": "Content",
+  "type": "content_blocks",
+  "allowed_blocks": ["text", "image", "callout"],
+  "max_blocks": 20
+}
+```
+
+When `allowed_blocks` is omitted, all registered block types are available. The `max_blocks` option caps how many blocks an editor can add (default: 50).
+
+## How blocks are stored
+
+Blocks are stored as JSON in the entry's `data` column — no additional tables or columns. Each block records its type and data:
 
 ```json
 {
@@ -44,54 +78,6 @@ Blocks are saved as JSON in `entries.data`:
 }
 ```
 
-## Block registry
-
-`ContentBlockRegistry` manages available block types:
-
-- `register(type, class)` — register a block type
-- `resolve(type)` — resolve a block class from its type string
-- `forContentType(contentType)` — filter blocks to those allowed by a content type
-
-Content types can restrict which blocks are available using an allowlist:
-
-```json
-{
-  "name": "content_blocks",
-  "label": "Content",
-  "type": "content_blocks",
-  "allowed_blocks": ["text", "image", "callout"]
-}
-```
-
-## Block contract
-
-The `ContentBlock` abstract class defines all block behavior through static methods (blocks are stateless):
-
-**Base fields** included on every block:
-- `theme` — `light`, `dark`, or `brand`
-- `width` — `full`, `contained`, or `narrow`
-
-**Methods:**
-- `type()`, `label()`, `icon()` — block identity
-- `schema()` — Filament form schema for the block's fields
-- `view()` — Blade view path for frontend rendering
-- `toFilamentBlock()` — returns a Filament `Builder\Block` instance
-- `renderWithWrapper(array $data)` — renders HTML with theme/width wrapper
-- `normalize(array $data)` — optional schema migrations for backwards compatibility
-
-## Starter block types
-
-| Block | Type key | View | Icon |
-|-------|----------|------|------|
-| Text | `text` | `blocks.text` | `heroicon-o-document-text` |
-| Image | `image` | `blocks.image` | `heroicon-o-photo` |
-| Callout | `callout` | `blocks.callout` | `heroicon-o-megaphone` |
-| Pull Quote | `pull_quote` | `blocks.pull-quote` | `heroicon-o-chat-bubble-bottom-center-text` |
-| Embed | `embed` | `blocks.embed` | `heroicon-o-code-bracket` |
-| CTA | `cta` | `blocks.cta` | `heroicon-o-cursor-arrow-rays` |
-
-Each block defines its schema in PHP and renders via a Blade view.
-
 ## EntryResource integration
 
 `EntryResource::buildContentFields()` handles the `content_blocks` field type:
@@ -110,7 +96,7 @@ Each block defines its schema in PHP and renders via a Blade view.
     ->columnSpan('full'),
 ```
 
-Filament provides drag-and-drop reordering, add/remove controls, JSON serialization, and per-block form schemas out of the box.
+The block editor provides drag-and-drop reordering, add/remove controls, JSON serialization, and per-block form schemas out of the box.
 
 ## Content type rules
 
@@ -166,6 +152,32 @@ PHP uses underscores (`pull_quote`), CSS uses hyphens (`cb--pull-quote`). Themes
 
 - **Current (v1):** the blocks array is treated as a single field. `DiffService` shows "Content blocks changed."
 - **Planned:** per-block diff support showing individual additions, removals, and edits.
+
+## Building custom blocks
+
+Custom blocks extend the `ContentBlock` abstract class and register with the `ContentBlockRegistry`:
+
+```php
+use App\Cms\Blocks\ContentBlock;
+use App\Cms\Blocks\ContentBlockRegistry;
+
+// In a service provider:
+app(ContentBlockRegistry::class)->register('custom', CustomBlock::class);
+```
+
+The `ContentBlock` class requires these static methods:
+
+| Method | Returns | Purpose |
+|--------|---------|---------|
+| `type()` | string | Block type key |
+| `label()` | string | Display name in admin |
+| `icon()` | string | Heroicon name |
+| `schema()` | array | Filament form fields |
+| `view()` | string | Blade view path |
+
+Optional methods:
+- `normalize(array $data)` — migrate data from older schemas
+- `renderWithWrapper(array $data)` — render HTML with theme/width wrapper
 
 ## Limitations and future work
 

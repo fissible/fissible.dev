@@ -1,6 +1,8 @@
 ---
 title: Maintenance Mode
 description: Per-tenant maintenance mode that returns 503 to unauthenticated visitors while allowing admins to continue working.
+sidebar:
+  order: 75
 ---
 
 Station provides a per-tenant maintenance mode that displays a 503 page to unauthenticated visitors while authenticated users continue to access the site normally. Each tenant controls its own maintenance state independently.

@@ -1,9 +1,13 @@
 ---
 title: Workflows
 description: Data-driven workflow engine with typed step handlers, configurable pipelines, and per-tenant workflow definitions.
+sidebar:
+  order: 22
 ---
 
-Station's workflow engine manages the content lifecycle — from draft submission through review, approval, and publishing. Workflows are data-driven, tenant-scoped, and configurable through the admin UI.
+Workflows define the steps content goes through before publishing — review gates, field-level diffs, notifications, scheduled holds, and the final publish. Each content type can have its own workflow, or use the tenant default, or publish directly with no pipeline.
+
+Most sites need just one workflow (e.g., Gate → Publish, or Gate → Review → Publish). You can create multiple workflows for different content types if they need different approval processes.
 
 ## How it works
 
@@ -133,9 +137,9 @@ If the tenant has a default workflow and the content type has no explicit assign
 
 ## Admin UI
 
-Workflow management is available in the admin panel (development environments only):
+Workflows appear as **Pipelines** in the admin sidebar under the **Automation** group. Management is available in development environments only:
 
-- **List view:** workflows with step count, linked content types, and default badge
+- **List view:** pipelines with step count, linked content types, and default badge
 - **Create/Edit:** name, slug, description, default toggle, and an orderable step repeater
 - **Step repeater:** each step configures handler type, label, required role, and handler-specific settings
 - **Validation:** the last step must be a Publish handler

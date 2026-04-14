@@ -40,7 +40,7 @@ shql my.db</code></pre>
 
     <!-- Terminal Preview -->
     <section class="shellql-preview">
-        <img src="/shellql/demo.gif" alt="ShellQL demo — browse tables, filter rows, inspect records" class="demo-gif">
+        <img src="/assets-shellql/demo.gif" alt="ShellQL demo — browse tables, filter rows, inspect records" class="demo-gif">
     </section>
 
     <!-- Why This Exists -->

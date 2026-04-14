@@ -25,5 +25,3 @@
 .tome.db-shm
 .tome.db-wal
 .worktrees/
-dist/
-.astro/

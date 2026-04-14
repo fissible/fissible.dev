@@ -264,45 +264,6 @@ php artisan drift:changelog`,
     codeExample: `# Generate openapi.yaml from your routes
 php artisan forge:generate --output openapi.yaml`,
   },
-  {
-    slug: 'watch',
-    name: 'watch',
-    tagline: 'Browser-based dev cockpit for Laravel',
-    install: 'composer require fissible/watch',
-    installLabel: 'composer',
-    docsUrl: 'https://docs.fissible.dev/watch',
-    githubUrl: 'https://github.com/fissible/watch',
-    suite: 'php',
-    features: [
-      'Dashboard, route browser, drift detector, spec viewer, version manager',
-      'Integrates accord, drift, forge, and fault in one UI',
-      'MIT licensed — free to use in any Laravel project',
-      'Filament 3 based — familiar admin UI conventions',
-    ],
-    codeExample: `// config/app.php
-Fissible\\Watch\\WatchServiceProvider::class,
-
-// Visit /watch in your browser`,
-  },
-  {
-    slug: 'fault',
-    name: 'fault',
-    tagline: 'Exception tracking and triage for Laravel',
-    install: 'composer require fissible/fault',
-    installLabel: 'composer',
-    docsUrl: 'https://docs.fissible.dev/fault',
-    githubUrl: 'https://github.com/fissible/fault',
-    suite: 'php',
-    features: [
-      'Fingerprinting and deduplication — one entry per unique exception',
-      'Status workflow: open → investigating → resolved',
-      'Test skeleton generation from captured exceptions',
-      'Ships as part of the watch cockpit, MIT licensed',
-    ],
-    codeExample: `// Fault captures via the Laravel exception handler automatically.
-// No manual instrumentation needed.
-// View and triage at /watch/exceptions`,
-  },
 ];
 
 export const paidProducts: PaidProduct[] = [
@@ -333,29 +294,29 @@ export const paidProducts: PaidProduct[] = [
     pricingNote: 'No subscriptions. No SaaS. Runs on your server.',
     screenshotsLabel: 'Approval queue · Content editor · Site switcher',
     features: [
-      { title: 'Approval is not optional', body: 'Draft → Submit → Approve → Publish. Every piece of content must pass through an approver before it goes live. There is no "publish directly" shortcut.' },
-      { title: 'Versioned by default', body: 'Every save creates a version. Roll back any content item to any previous state. Auditors can see exactly what changed, when, and who changed it.' },
-      { title: 'Schedule without risk', body: 'Set a future publish date on approved content. Nothing can be scheduled that hasn\'t been approved. The scheduling system respects the workflow, not the other way around.' },
-      { title: 'Multi-tenant from the start', body: 'Run multiple sites from a single Station install. Each site has its own content, its own users, and its own approval chain. No cross-site leakage.' },
-      { title: 'Self-hosted, your data', body: 'Station runs on your server, in your infrastructure. No third-party SaaS in the content path. Your content, your database, your control.' },
-      { title: 'Built on Filament v5', body: 'Laravel developers already know the admin conventions. Station extends Filament — familiar panels, familiar form components, extensible with standard Filament plugins.' },
+      { title: 'Approval is enforced, not implied', body: 'Draft → Submit → Approve → Publish is the default path. Station is built for teams that need workflow control instead of hoping roles and editor discipline are enough.' },
+      { title: 'Version history that survives scrutiny', body: 'Keep a clear record of what changed, who changed it, and when it was approved. Roll back to a prior state without losing the audit trail.' },
+      { title: 'Scheduling that respects review', body: 'Future publishing happens after approval, not instead of approval. Station keeps timing and workflow aligned so content does not slip live early.' },
+      { title: 'Multi-site without cross-site bleed', body: 'Run multiple sites from one install while keeping content, users, and approval boundaries isolated per tenant.' },
+      { title: 'Self-hosted on infrastructure you control', body: 'Deploy Station on your own server, keep your own data, and avoid putting your publishing path behind a SaaS admin console.' },
+      { title: 'Built on Laravel conventions your team can inspect', body: 'Filament admin patterns, Laravel internals, and an ecosystem of public tools make the stack understandable instead of opaque.' },
     ],
     marketingSections: [
       {
-        title: 'The problem with every other CMS',
-        body: 'WordPress, Statamic, and most headless CMSs treat publishing as a permission problem: add a role, restrict the button. But roles are misconfigured. Editors get promoted. People click publish when they meant to save a draft. Station treats publishing as a workflow problem: the only way content reaches production is if an approver signed off on it. There is no other path.',
+        title: 'Most CMS products model publishing as a button problem',
+        body: 'The usual pattern is simple: hide or show Publish based on a role. That works until roles drift, someone inherits more access than intended, or a rushed editor clicks the wrong action. Station treats publishing as workflow infrastructure instead. Content moves forward only when the workflow allows it.',
       },
       {
-        title: 'Who uses this',
-        body: 'Financial advisors and wealth management firms where compliance reviews every client communication. Law firms where content must be reviewed before publication. Healthcare providers under HIPAA marketing constraints. Any editorial team where "I thought it was approved" is not an acceptable post-mortem.',
+        title: 'Who Station is for',
+        body: 'Financial advisors and wealth-management firms with compliance review. Law firms that require pre-publication approval. Healthcare or regulated marketing teams. Franchises, agencies, and multi-site organizations that need isolated publishing boundaries. Any team where an accidental publish is an incident, not a typo.',
       },
       {
-        title: 'What v1 ships with',
-        body: 'RichEditor content types. Draft → Submit → Approve → Publish workflow enforced at the model layer. Content versioning with rollback. Scheduled publishing (post-approval only). Multi-tenant architecture with isolated site contexts. Audit log. Filament v5 admin panel. Browser-based installer.',
+        title: 'What the first release focuses on',
+        body: 'Approval-first content workflows, draft forks and version history, scheduled publishing after approval, tenant-aware site isolation, auditability, and a Laravel + Filament admin that feels familiar to teams already in that ecosystem.',
       },
       {
-        title: 'One-time license, no subscriptions',
-        body: 'Station is not SaaS. You buy a per-site license, deploy it to your own server, and own it. No monthly fees. No data leaving your infrastructure. No vendor lock-in on your content pipeline.',
+        title: 'One-time license, self-hosted economics',
+        body: 'Station is sold as software, not as a hosted service. You run it on your infrastructure, keep the data path under your control, and avoid turning editorial workflow into another recurring SaaS dependency. For agencies and multi-brand teams, multi-tenancy also avoids the usual per-site license multiplication.',
       },
     ],
   },

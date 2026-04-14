@@ -5,24 +5,118 @@ interface Props { product: PaidProduct; }
 const { product } = Astro.props;
 
 const workflowSteps = ['Draft', 'Submit', 'Approve', 'Publish', 'Audit Log'];
+const proofPoints = [
+  'Approval is enforced in the workflow, not left to editor discipline',
+  'Scheduled publishing respects review status before anything can go live',
+  'Each site keeps its own users, content, and approval boundaries',
+];
+const comparisonPoints = [
+  {
+    title: 'Per-site CMS licensing gets expensive fast',
+    body: 'Agencies and multi-brand teams often pay once per site. Five customer sites can mean five separate CMS licenses. Station is designed around multi-tenancy, so one install can serve multiple tenants without a per-site license multiplier.',
+  },
+  {
+    title: 'Custom approval workflows are expensive to maintain',
+    body: 'Building review, scheduling guards, role boundaries, and audit history yourself sounds straightforward until exceptions pile up. Station is meant to replace that internal workflow glue with one product path.',
+  },
+  {
+    title: 'SaaS admin rules are not the same as owning the publishing path',
+    body: 'Station is self-hosted, so infrastructure, content, and operational behavior stay under your control. That matters when approval rules are part of your risk surface.',
+  },
+];
+const objectionCards = [
+  {
+    title: 'Why not just add a publish approval step to our current CMS?',
+    body: 'Because most systems still model publishing as a permission. Station models it as workflow state, so review requirements survive role drift, rushed clicks, and scheduling mistakes.',
+  },
+  {
+    title: 'Why not build this in-house?',
+    body: 'You can, but then your team owns every role edge case, scheduling guard, audit requirement, and tenant boundary forever. Station is for teams that want those constraints productized instead of custom-maintained.',
+  },
+  {
+    title: 'Why is multi-tenancy important?',
+    body: 'It changes the economics for agencies, franchise groups, and multi-brand teams. You can isolate each tenant while avoiding the operational sprawl and license multiplication of one CMS install per site.',
+  },
+];
 ---
 <main class="station-page">
 
   <!-- Hero -->
   <header class="station-hero">
-    <h1 class="station-headline">The CMS that enforces approval before anything goes live.</h1>
-    <p class="station-subhead">Self-hosted on your infrastructure. Multi-tenant. Built on Laravel and Filament.</p>
+    <p class="station-kicker">Station</p>
+    <h1 class="station-headline">The self-hosted CMS for teams that cannot publish without approval.</h1>
+    <p class="station-subhead">Built for regulated marketing, legal review, editorial teams, and multi-site operations that need enforced workflow, clean audit history, and infrastructure they control.</p>
     <div class="station-badges">
       <span class="badge">Self-Hosted</span>
       <span class="badge">Laravel + Filament v5</span>
       <span class="badge">One-time license</span>
     </div>
+    <ul class="station-proof-points">
+      {proofPoints.map(point => <li>{point}</li>)}
+    </ul>
     <div class="station-cta">
       <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
       {product.docsUrl && <a href={product.docsUrl} class="btn-secondary">View Docs</a>}
       <a href="#how-it-works" class="btn-secondary">See how it works ↓</a>
     </div>
+    <div class="station-inline-form-wrap">
+      <form
+        class="waitlist-form station-inline-form"
+        action={`https://formspree.io/f/${product.formspreeId}`}
+        method="POST"
+      >
+        <input type="email" name="email" placeholder="Work email" required />
+        <input type="hidden" name="product" value={product.slug} />
+        <button type="submit">Request Early Access</button>
+      </form>
+      {product.pricingNote && <p class="pricing-note">{product.pricingNote}</p>}
+    </div>
   </header>
+
+  <section class="station-decision">
+    <div class="decision-card">
+      <h2>What you are buying</h2>
+      <p>A CMS where the publishing path is designed for approval-first teams: draft forks, required review, scheduled release after approval, version history, auditability, and tenant isolation.</p>
+    </div>
+    <div class="decision-card">
+      <h2>Why it exists</h2>
+      <p>Most CMS products treat “publish” as a permission toggle. Station treats it as workflow infrastructure, so a bad role change or rushed click does not send content live.</p>
+    </div>
+    <div class="decision-card">
+      <h2>Who it fits</h2>
+      <p>Teams with compliance, legal, franchise, or editorial review requirements that want to self-host instead of relying on SaaS publishing rules.</p>
+    </div>
+  </section>
+
+  <section class="station-comparison">
+    <div class="section-intro">
+      <p class="section-kicker">Why teams switch</p>
+      <h2>The economics and risk profile are different from per-site CMS setups.</h2>
+    </div>
+    <div class="comparison-grid">
+      {comparisonPoints.map(point => (
+        <div class="comparison-card">
+          <h3>{point.title}</h3>
+          <p>{point.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="station-diagram">
+    <div class="section-intro">
+      <p class="section-kicker">Implementation Diagram</p>
+      <h2>A short visual for the operational model.</h2>
+    </div>
+    <figure class="diagram-frame">
+      <img
+        src="/station/implementation-diagram.svg"
+        alt="Station implementation diagram showing multiple tenant sites flowing through one self-hosted install with approval workflow, audit log, and isolated publishing boundaries."
+        loading="lazy"
+      />
+    </figure>
+    <p class="diagram-caption">Reusable asset for the site, sales notes, docs, or social crops. It shows the multi-tenant implementation story and the cost argument in one frame.</p>
+  </section>
 
   <!-- Workflow Steps -->
   <section class="station-workflow" id="how-it-works">
@@ -90,20 +184,35 @@ const workflowSteps = ['Draft', 'Submit', 'Approve', 'Publish', 'Audit Log'];
     </div>
   </section>
 
+  <section class="station-objections">
+    <div class="section-intro">
+      <p class="section-kicker">Objections</p>
+      <h2>The decision is usually about risk, maintenance, or cost.</h2>
+    </div>
+    <div class="objection-grid">
+      {objectionCards.map(card => (
+        <div class="objection-card">
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- Waitlist Form -->
   <section class="station-waitlist" id="waitlist">
-    <h2 class="waitlist-heading">Station is launching soon.</h2>
-    <p class="waitlist-sub">Be the first to try it. Get notified when v1 ships.</p>
+    <h2 class="waitlist-heading">Request early access.</h2>
+    <p class="waitlist-sub">If you are evaluating approval workflow, multi-site CMS costs, or a replacement for custom publishing rules, join the list and I’ll reach out when the first release is ready.</p>
     <form
       class="waitlist-form"
       action={`https://formspree.io/f/${product.formspreeId}`}
       method="POST"
     >
-      <input type="email" name="email" placeholder="your@email.com" required />
+      <input type="email" name="email" placeholder="Work email" required />
       <input type="hidden" name="product" value={product.slug} />
-      <button type="submit">Notify me</button>
+      <button type="submit">Request Access</button>
     </form>
-    {product.pricingNote && <p class="pricing-note">{product.pricingNote}</p>}
+    <p class="waitlist-sub">Include your work email if you want product updates tied to a real team or use case.</p>
   </section>
 
 </main>
@@ -113,11 +222,42 @@ const workflowSteps = ['Draft', 'Submit', 'Approve', 'Publish', 'Audit Log'];
 
 /* Hero */
 .station-hero { max-width: 700px; display: flex; flex-direction: column; gap: 1.25rem; }
-.station-headline { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
-.station-subhead { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 560px; }
+.station-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; }
+.station-headline { font-size: clamp(2rem, 4.8vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.station-subhead { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 640px; }
 .station-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .badge { font-size: 0.75rem; font-weight: 600; border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem 0.75rem; color: var(--text-muted); }
+.station-proof-points { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; max-width: 620px; }
+.station-proof-points li { color: var(--text-muted); font-size: 0.92rem; line-height: 1.5; padding-left: 1rem; position: relative; }
+.station-proof-points li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 .station-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.station-inline-form-wrap { display: flex; flex-direction: column; gap: 0.6rem; max-width: 560px; }
+.station-inline-form { justify-content: flex-start; }
+
+.section-intro { max-width: 700px; display: flex; flex-direction: column; gap: 0.45rem; }
+.section-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; }
+.section-intro h2 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; }
+
+/* Decision framing */
+.station-decision { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.decision-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.25rem 1.35rem; }
+.decision-card h2 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.45rem; }
+.decision-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+@media (max-width: 800px) { .station-decision { grid-template-columns: 1fr; } }
+
+/* Comparison */
+.station-comparison { display: flex; flex-direction: column; gap: 1rem; }
+.comparison-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.comparison-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.comparison-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.45rem; }
+.comparison-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+@media (max-width: 800px) { .comparison-grid { grid-template-columns: 1fr; } }
+
+/* Diagram */
+.station-diagram { display: flex; flex-direction: column; gap: 1rem; }
+.diagram-frame { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.diagram-frame img { display: block; width: 100%; height: auto; }
+.diagram-caption { max-width: 760px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
 /* Workflow */
 .station-workflow { max-width: 700px; }
@@ -156,6 +296,14 @@ const workflowSteps = ['Draft', 'Submit', 'Approve', 'Publish', 'Audit Log'];
 .usecase-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
 .usecase-list li { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; padding-left: 1rem; position: relative; }
 .usecase-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+
+/* Objections */
+.station-objections { display: flex; flex-direction: column; gap: 1rem; }
+.objection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.objection-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.objection-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.45rem; }
+.objection-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+@media (max-width: 800px) { .objection-grid { grid-template-columns: 1fr; } }
 
 /* Waitlist */
 .station-waitlist { border-top: 1px solid var(--border); padding-top: 3rem; display: flex; flex-direction: column; gap: 1rem; max-width: 560px; }

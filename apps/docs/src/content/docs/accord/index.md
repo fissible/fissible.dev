@@ -5,15 +5,15 @@ description: OpenAPI contract validator for PHP. PSR-7/15 core with drivers for 
 
 accord is an OpenAPI contract validator for PHP. It validates HTTP requests and responses against an OpenAPI 3.0 spec at runtime using PSR-7/15 middleware. Drivers are available for Laravel, Slim, and Mezzio.
 
-accord is the foundation of the Fissible PHP suite. The other tools — forge, drift, watch, and fault — all depend on it.
+accord is the foundation of the Fissible PHP suite. forge and drift build on it directly, and Station wraps the same contract-validation workflow into its integrated admin experience.
 
 ## The Fissible PHP suite
 
 ```
-[forge]  ──────────────────────────────►  [accord]  ◄── [watch] ◄── [fault]
-generate / update spec                   validate at      cockpit UI   exception
-    ▲                                    runtime │        (bolt-on)    tracking
-    │                                            ▼
+[forge]  ──────────────────────────────►  [accord]
+generate / update spec                   validate at runtime
+    ▲                                    │
+    │                                    ▼
     └──────────────────────────────────  [drift]
                                          detect drift, bump version
 ```
@@ -21,8 +21,7 @@ generate / update spec                   validate at      cockpit UI   exception
 - **forge** — generate an OpenAPI spec from your Laravel routes
 - **accord** — validate requests and responses against the spec at runtime
 - **drift** — detect spec drift, recommend semver bumps, generate changelogs
-- **watch** — browser-based cockpit for all of the above
-- **fault** — exception tracking integrated into the watch UI
+- **station** — wraps the same API tooling and exception triage into its built-in admin platform
 
 ## How it works
 

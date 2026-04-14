@@ -90,8 +90,6 @@ export default defineConfig({
         { label: 'accord',     autogenerate: { directory: 'accord' } },
         { label: 'drift',      autogenerate: { directory: 'drift' } },
         { label: 'forge',      autogenerate: { directory: 'forge' } },
-        { label: 'watch',      autogenerate: { directory: 'watch' } },
-        { label: 'fault',      autogenerate: { directory: 'fault' } },
       ],
     }),
   ],

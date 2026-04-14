@@ -1,12 +1,22 @@
 ---
 // apps/site/src/components/ConvergeCTA.astro
+import { paidProducts } from '../data/packages';
+const station = paidProducts.find(p => p.slug === 'station')!;
 ---
 <section class="converge-cta">
-  <h2 class="converge-heading">Put approval between your team and production.</h2>
-  <p class="converge-sub">v1 ships with enforced approval workflows, versioning, scheduling, and multi-tenancy.</p>
+  <h2 class="converge-heading">If approval is mandatory, your CMS should enforce it.</h2>
+  <p class="converge-sub">Join the launch list for Station. v1 focuses on enforced review, versioned publishing, scheduling, and multi-site isolation without the usual per-site CMS overhead.</p>
+  <form
+    class="waitlist-form converge-form"
+    action={`https://formspree.io/f/${station.formspreeId}`}
+    method="POST"
+  >
+    <input type="email" name="email" placeholder="Work email" required />
+    <input type="hidden" name="product" value={station.slug} />
+    <button type="submit">Request Access</button>
+  </form>
   <div class="converge-actions">
-    <a href="/station" class="btn-primary">Join the Waitlist</a>
-    <a href="/tools" class="btn-secondary">Explore Tools</a>
+    <a href="/station" class="btn-secondary">Read the Station Page</a>
   </div>
 </section>
 
@@ -23,12 +33,16 @@
 .converge-sub {
   font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .converge-actions {
   display: flex;
   gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+.converge-form {
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 </style>

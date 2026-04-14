@@ -29,8 +29,8 @@ describe('tuiPackages', () => {
 });
 
 describe('phpPackages', () => {
-  it('has exactly 5 packages', () => {
-    expect(phpPackages).toHaveLength(5);
+  it('has exactly 3 packages', () => {
+    expect(phpPackages).toHaveLength(3);
   });
 
   it('each package has a composer install command', () => {
@@ -67,8 +67,8 @@ describe('paidProducts', () => {
 });
 
 describe('allOssPackages', () => {
-  it('contains all 9 OSS packages', () => {
-    expect(allOssPackages).toHaveLength(9);
+  it('contains all 7 OSS packages', () => {
+    expect(allOssPackages).toHaveLength(7);
   });
 
   it('has no duplicate slugs', () => {

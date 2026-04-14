@@ -12,6 +12,7 @@ Station is a self-hosted CMS and workflow platform built on Laravel 12. Create c
 - **Content management** — define content types with custom fields, create entries with versioning, schedule publishes with embargo/expiration dates
 - **Form builder** — collect visitor submissions with spam defense and automation triggers
 - **Editorial workflows** — review gates, field-level diffs, hotfix approval, and automated publishing
+- **Built-in API tooling** — OpenAPI contract validation, drift analysis, and browser-based operational tooling integrated into Station
 - **Multi-tenancy** — isolated tenants on a shared database, each with its own content, users, and configuration
 - **Module system** — extend Station with external packages that plug into navigation, search, and permissions
 - **Self-hosted** — deploy on your own server, keep your data
@@ -23,6 +24,7 @@ Station is a self-hosted CMS and workflow platform built on Laravel 12. Create c
 | **CMS** | Content types, entries, versioning, media library, menus, scheduling, SEO, sitemaps, REST API |
 | **Flow** | Workflow engine for content review, hotfix approval, notifications, and holds |
 | **Forms** | Form builder with submissions, spam defense, and automation integration |
+| **Platform** | Integrated admin tooling, backups, API operations, and exception triage |
 
 See [Modules](/station/modules/) for extending Station with custom modules.
 

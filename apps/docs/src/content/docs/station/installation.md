@@ -170,6 +170,7 @@ After installation, these are the key environment variables you may want to adju
 | `STATION_PLATFORM_ENABLED` | `false` | Enables the `/platform` admin panel for managing tenants, backups, and system settings |
 | `STATION_THEME` | `heartland` | Active frontend theme (themes live in the `themes/` directory) |
 | `STATION_PRIMARY_COLOR` | `#C17B3A` | Hex color used as the accent/brand color in the active theme |
+| `STATION_TENANCY_MODE` | `single` | Host resolution mode: `single` falls back to the first tenant on unknown hosts; `multi` requires an explicit tenant host match and returns 404 otherwise |
 | `MFA_ENABLED` | `false` | Enables TOTP multi-factor authentication for user accounts |
 
 ### Backups
@@ -252,6 +253,9 @@ QUEUE_CONNECTION=redis
 CACHE_STORE=redis
 SESSION_DRIVER=database
 
+# Multi-tenant production installs should usually fail closed on unknown hosts
+STATION_TENANCY_MODE=multi
+
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.your-provider.com
 MAIL_PORT=587
@@ -259,6 +263,8 @@ MAIL_USERNAME=your-smtp-user
 MAIL_PASSWORD=your-smtp-password
 MAIL_FROM_ADDRESS=noreply@your-domain.com
 ```
+
+If you run a single-site self-hosted install, leaving `STATION_TENANCY_MODE=single` is usually correct. If you host multiple tenants on one Station instance, set `STATION_TENANCY_MODE=multi` so requests for unknown domains do not fall back to the first tenant.
 
 **3. Run the installer**
 

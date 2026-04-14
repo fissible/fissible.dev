@@ -51,6 +51,23 @@ The middleware skips tenant resolution for `/platform` and `/setup` routes (thes
 
 Resolution is wrapped in a try-catch to handle fresh installs where no tenants exist yet.
 
+### `STATION_TENANCY_MODE`
+
+Tenant fallback behavior is controlled by `STATION_TENANCY_MODE`:
+
+| Mode | Behavior |
+|------|----------|
+| `single` | Unknown hosts fall back to the first tenant. This is the default and is suitable for single-site self-hosted installs. |
+| `multi` | Unknown hosts do **not** fall back. The request returns `404` unless the host matches a tenant domain or subdomain. |
+
+For multi-tenant production installs, set:
+
+```dotenv
+STATION_TENANCY_MODE=multi
+```
+
+This makes host routing fail closed, which avoids accidentally serving the first tenant when DNS, proxy, or domain mapping is misconfigured.
+
 ## Tenant membership
 
 The `TenantMembership` model links users to tenants:

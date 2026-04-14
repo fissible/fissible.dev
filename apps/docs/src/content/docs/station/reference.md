@@ -30,6 +30,13 @@ Station uses [Spatie Laravel Permission](https://spatie.be/docs/laravel-permissi
 | **Admin** | `/admin` | Tenant members | Content, media, menus, forms, workflows, users, site settings |
 | **Platform** | `/platform` | Platform admins | Tenant management, backups, system health, notification channels, modules |
 
+### Integrated operations tooling
+
+Station folds API operations and fault triage into the platform itself rather than shipping them as separate standalone libraries:
+
+- **API operations** — contract validation, drift analysis, spec generation, and related admin workflows live inside the Station platform experience
+- **Exception triage** — captured faults, deduplication, and resolution workflows are surfaced as Station functionality rather than a separate package
+
 ### Module system
 
 **Built-in modules** implement the `PlatformModule` contract:

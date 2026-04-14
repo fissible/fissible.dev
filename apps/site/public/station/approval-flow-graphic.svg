@@ -1,0 +1,73 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Station approval flow graphic</title>
+  <desc id="desc">A marketing graphic showing the Station approval flow from draft to publish with enforced approval and audit logging.</desc>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="80" x2="1520" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6F7F3"/>
+      <stop offset="1" stop-color="#E9EFE4"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1C7C54"/>
+      <stop offset="1" stop-color="#245B4A"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1E2B21" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .eyebrow { font: 700 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; fill: #1C7C54; }
+      .headline { font: 700 54px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #162118; }
+      .subhead { font: 400 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4D5B50; }
+      .label { font: 700 28px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #18231A; }
+      .body { font: 400 19px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #58655A; }
+      .small { font: 700 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; fill: #5F6C61; }
+      .invert { fill: #F7FBF7; }
+      .invertBody { fill: #DCEADF; }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <text x="120" y="118" class="eyebrow">Approval Flow</text>
+  <text x="120" y="184" class="headline">Nothing goes live until the workflow says it can.</text>
+  <text x="120" y="226" class="subhead">Station treats approval as workflow state, not just a permission toggle.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="320" width="230" height="180" rx="28" fill="#FFFFFF" stroke="#D4DED0" stroke-width="2"/>
+    <text x="154" y="386" class="small">Step 1</text>
+    <text x="154" y="432" class="label">Draft</text>
+    <text x="154" y="466" class="body">Work safely without affecting published content.</text>
+  </g>
+  <path d="M350 410H420" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M400 390L440 410L400 430" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="440" y="320" width="230" height="180" rx="28" fill="#FFFFFF" stroke="#D4DED0" stroke-width="2"/>
+    <text x="474" y="386" class="small">Step 2</text>
+    <text x="474" y="432" class="label">Submit</text>
+    <text x="474" y="466" class="body">Send content into review instead of publishing directly.</text>
+  </g>
+  <path d="M670 410H740" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M720 390L760 410L720 430" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="760" y="284" width="280" height="252" rx="32" fill="url(#accent)"/>
+    <text x="798" y="354" class="small" fill="#DCEADF">Critical Gate</text>
+    <text x="798" y="414" class="headline" fill="#F7FBF7" style="font-size:40px">Approve</text>
+    <text x="798" y="454" class="subhead" fill="#DCEADF" style="font-size:22px">Required before scheduling or release.</text>
+    <rect x="798" y="476" width="204" height="34" rx="12" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="818" y="499" class="small" fill="#DCEADF" style="font-size:14px">Model-layer enforcement</text>
+  </g>
+  <path d="M1040 410H1110" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1090 390L1130 410L1090 430" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="1130" y="320" width="230" height="180" rx="28" fill="#FFFFFF" stroke="#D4DED0" stroke-width="2"/>
+    <text x="1164" y="386" class="small">Step 4</text>
+    <text x="1164" y="432" class="label">Publish</text>
+    <text x="1164" y="466" class="body">Release only approved content to production.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="612" width="1240" height="140" rx="28" fill="#162118"/>
+    <text x="224" y="672" class="small" fill="#DCEADF">Auditability</text>
+    <text x="224" y="724" class="label invert">Every step leaves a trail: who changed it, who approved it, and when it went live.</text>
+  </g>
+</svg>

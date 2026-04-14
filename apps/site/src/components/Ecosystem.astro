@@ -7,8 +7,8 @@ const tools = [
 ];
 ---
 <section class="ecosystem">
-  <h2 class="ecosystem-heading">Built on open-source tools</h2>
-  <p class="ecosystem-sub">Station's API layer is powered by tools you can use independently.</p>
+  <h2 class="ecosystem-heading">Open-source proof, not a black box</h2>
+  <p class="ecosystem-sub">The API and developer workflow ideas inside Station are built on public tools you can inspect today.</p>
   <div class="ecosystem-tools">
     {tools.map(t => (
       <a href={t.url} class="ecosystem-tool">
@@ -17,7 +17,8 @@ const tools = [
       </a>
     ))}
   </div>
-  <a href="/tools" class="ecosystem-link">Explore all tools →</a>
+  <p class="ecosystem-note">Use the tools independently, or treat them as evidence that the Station stack is real, inspectable, and already shipping.</p>
+  <a href="/tools" class="ecosystem-link">Inspect the OSS ecosystem →</a>
 </section>
 
 <style>
@@ -66,6 +67,12 @@ const tools = [
   margin-top: 1.25rem;
   font-size: 0.875rem;
   color: var(--accent);
+}
+.ecosystem-note {
+  max-width: 640px;
+  margin: 1.25rem auto 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
 }
 .ecosystem-link:hover { color: var(--accent-hover); }
 </style>

@@ -36,4 +36,4 @@ drift is typically installed as a dev dependency when used only for CI checks an
 composer require --dev fissible/drift
 ```
 
-Note: if you also use [watch](../watch/) in production, install drift without `--dev` since watch depends on drift at runtime.
+Install drift without `--dev` when your production app depends on runtime drift analysis or wraps it into a higher-level platform integration like Station.

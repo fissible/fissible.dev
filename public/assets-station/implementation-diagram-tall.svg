@@ -1,0 +1,84 @@
+<svg width="1080" height="1600" viewBox="0 0 1080 1600" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Station implementation diagram tall</title>
+  <desc id="desc">Tall slide version of the Station implementation diagram.</desc>
+  <defs>
+    <linearGradient id="bg" x1="60" y1="60" x2="1020" y2="1540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F7F2"/>
+      <stop offset="1" stop-color="#E8EFE2"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1C7C54"/>
+      <stop offset="1" stop-color="#245B4A"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1080" height="1600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1E2B21" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .eyebrow { font: 700 20px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; fill: #1C7C54; }
+      .headline { font: 700 38px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #162118; }
+      .subhead { font: 400 22px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4C5A4F; }
+      .small { font: 700 16px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; fill: #5F6C61; }
+      .label { font: 700 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #18231A; }
+      .body { font: 400 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #536156; }
+      .invert { fill: #F7FBF7; }
+      .invertBody { fill: #DCEADF; }
+    </style>
+  </defs>
+  <rect width="1080" height="1600" fill="url(#bg)"/>
+  <text x="80" y="102" class="eyebrow">Station Implementation</text>
+  <text x="80" y="164" class="headline">How one install serves multiple sites</text>
+  <text x="80" y="202" class="subhead">A short implementation diagram for agencies and multi-brand teams.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="280" width="920" height="250" rx="28" fill="#FBFCFA" stroke="#D4DED0" stroke-width="2"/>
+    <text x="122" y="336" class="small">Tenant Sites</text>
+    <rect x="122" y="380" width="250" height="96" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="154" y="434" class="label">Client Site A</text>
+    <text x="154" y="462" class="body">Own users and workflow</text>
+    <rect x="414" y="380" width="250" height="96" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="446" y="434" class="label">Client Site B</text>
+    <text x="446" y="462" class="body">Own users and workflow</text>
+    <rect x="706" y="380" width="250" height="96" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="738" y="434" class="label">Client Site C+</text>
+    <text x="738" y="462" class="body">Add tenants, not new apps</text>
+  </g>
+
+  <path d="M540 530V620" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M520 600L540 640L560 600" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="180" y="660" width="720" height="330" rx="32" fill="url(#accent)"/>
+    <text x="230" y="726" class="small" fill="#DCEADF">Station</text>
+    <text x="230" y="792" class="headline" fill="#F7FBF7">Single self-hosted install</text>
+    <text x="230" y="834" class="subhead" fill="#DCEADF">Shared application, isolated tenants,</text>
+    <text x="230" y="866" class="subhead" fill="#DCEADF">approval-first workflow.</text>
+    <rect x="230" y="886" width="620" height="68" rx="16" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="262" y="923" class="label invert">Draft → Submit →</text>
+    <text x="422" y="949" class="label invert">Approve → Publish</text>
+    <rect x="230" y="972" width="288" height="72" rx="16" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="262" y="1016" class="label invert">Audit log</text>
+    <rect x="562" y="972" width="288" height="72" rx="16" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="594" y="1016" class="label invert">Tenant isolation</text>
+  </g>
+
+  <path d="M540 990V1080" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M520 1060L540 1100L560 1060" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="1120" width="920" height="180" rx="28" fill="#FBFCFA" stroke="#D4DED0" stroke-width="2"/>
+    <text x="122" y="1176" class="small">Outcomes</text>
+    <text x="122" y="1234" class="label">Approved content only</text>
+    <text x="422" y="1234" class="label">Lower ops sprawl</text>
+    <text x="756" y="1234" class="label">Better economics</text>
+    <text x="122" y="1266" class="body">Reviewed changes publish</text>
+    <text x="422" y="1266" class="body">One app instead of many</text>
+    <text x="756" y="1266" class="body">No per-site CMS multiplier</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="1360" width="920" height="150" rx="24" fill="#162118"/>
+    <text x="122" y="1420" class="headline" fill="#F7FBF7">Agency example: 5 client CMS tenants,</text>
+    <text x="122" y="1460" class="headline" fill="#F7FBF7">1 Station install.</text>
+    <text x="122" y="1500" class="subhead" fill="#DCEADF">Fewer installs, less ops sprawl, and one approval model to maintain.</text>
+  </g>
+</svg>

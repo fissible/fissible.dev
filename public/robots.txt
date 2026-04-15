@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /platform/
+Disallow: /storage/
+
+Sitemap: https://fissible.dev/sitemap.xml

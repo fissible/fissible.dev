@@ -1,5 +1,7 @@
 # Station Web App Scaffold — Implementation Plan
 
+> **Superseded:** This plan describes the temporary `fissible.dev` Laravel shell. Current direction is to serve `fissible.dev` as a first-party tenant from the canonical Station app. See `docs/superpowers/plans/2026-04-15-station-dogfood-handoff.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Convert fissible.dev from static Astro sites to a Laravel application, port marketing content to Blade views, and prepare for Forge deployment.

@@ -8,6 +8,9 @@ return [
 
     'domains' => [
         'managed_root' => env('STATION_MANAGED_ROOT_DOMAIN', 'fissible.dev'),
+        'app_hosts' => [
+            env('STATION_PLATFORM_HOST', 'platform.fissible.dev'),
+        ],
         'reserved_slugs' => [
             'www',
             'platform',

@@ -158,15 +158,34 @@ Recommended immediate next steps:
 4. Port the homepage and Station page before worrying about full CMS behavior.
 5. Leave `apps/docs` untouched except for cross-linking unless the user explicitly expands scope.
 
-## Risks
+## Session handoff notes (2026-04-15)
 
-- A root-level Laravel install will replace the repo's current Node-first shape; that is intentional, but it will create broad file churn.
-- If the user actually wants Station as a separate product repo and `fissible.dev` to remain mostly marketing/docs, this plan is too aggressive.
-- The existing Station docs describe more product surface than this ticket should implement in one pass.
+### Completed this session
+- Phase 1: Converted fissible.dev from Astro to Laravel 13 (PR #6, merged)
+- Phase 2: Station app structure — Filament v5 admin, tenant subdomain rendering (PR #7, merged)
+- Phase 3: Docs coexistence resolved — both sites on Forge, docs stays Starlight
+- Deployed to Laravel Forge (DigitalOcean)
+- Wildcard DNS (`*.fissible.dev`) and wildcard SSL configured
+- First tenant (`demo`) live at `demo.fissible.dev`
+- `robots.txt` updated (closes #1)
+- `station:make-admin` command with `--reset-password` flag
+- Demo tenant seeder in DatabaseSeeder
 
-## Explicit assumptions to confirm later
+### Decisions made
+- Forge on DigitalOcean for hosting (not Vapor, not Railway)
+- Subdomains for tenant sites (`{slug}.fissible.dev`), not path prefixes
+- Filament admin at `/admin` without domain constraint (path + auth gate sufficient)
+- HTML sanitization via `strip_tags` allowlist (Laravel 13 lacks `Str::sanitizeHtml`)
+- `STATION_PLATFORM_ENABLED` defaults to false in both config and .env.example
+- Docs stay as separate Starlight build at `docs.fissible.dev`
 
-If the user responds with preferences, revisit these first:
-- Forge/VPS vs another host
-- whether docs should stay static permanently
-- whether tools pages remain hand-authored or become Station-managed content
+### Production fixes applied during deploy
+- Tenant scaffold (models, services, migrations) was never committed — fixed
+- Filament admin routes 404'd due to `->domain('localhost')` baked into route cache — removed domain constraint
+- `station:make-admin` accepted empty password — added validation loop
+- Tenant creation failed on MySQL strict mode (missing uuid) — added auto-generation in model boot
+
+### Next work
+- #3: Rewrite marketing copy for clear positioning + conversion
+- #4: Add interactive demo / screenshots of approval workflow
+- Phase 2+: Rich text editor customization, approval workflows (Flow module), API routes

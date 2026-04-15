@@ -26,7 +26,6 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->domain(parse_url(config('app.url'), PHP_URL_HOST) ?: 'localhost')
             ->path('admin')
             ->login()
             ->colors([

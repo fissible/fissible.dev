@@ -3,6 +3,9 @@
 /public/hot
 /public/storage
 /public/build
+/public/js/filament
+/public/css/filament
+/public/fonts/filament
 /storage/*.key
 /storage/debugbar
 /storage/pail

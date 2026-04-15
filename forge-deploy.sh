@@ -13,6 +13,9 @@
 #   2. Generate app key: php artisan key:generate
 #   3. Create storage symlink: php artisan storage:link
 #   4. Run initial migration: php artisan migrate --force
+#   5. Create admin user: php artisan station:make-admin admin@fissible.dev
+#   6. Enable wildcard subdomains in Forge site settings
+#   7. Add *.fissible.dev wildcard DNS A record
 
 set -e
 
@@ -28,6 +31,8 @@ composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
 npm ci --ignore-scripts
 npm run build
+
+php artisan filament:assets
 
 php artisan migrate --force
 php artisan config:cache

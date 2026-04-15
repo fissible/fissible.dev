@@ -120,19 +120,12 @@ Important constraint:
 Exit criteria:
 - New Station work can land in Laravel without rethinking the repo structure again.
 
-### Phase 3: Decide docs coexistence path
+### Phase 3: Decide docs coexistence path ✅
 
-Default for now:
-- Keep `apps/docs` deployed separately during the initial app migration.
-
-Work in this phase:
-- Add clear links between the Laravel marketing site and the docs site.
-- Document whether Station docs will later:
-  - remain separate on Starlight, or
-  - move into Station-managed content/docs pages.
-
-Exit criteria:
-- There is a documented, intentional split instead of two unrelated site stacks.
+Decision: Both the Laravel marketing site and the Starlight docs site are deployed
+on Forge. Docs remain as a separate Starlight build at `docs.fissible.dev`, served
+from `apps/docs/`. This is the intentional long-term split — docs stay as static
+Starlight, marketing/platform is Laravel.
 
 ### Phase 4: Decommission Astro marketing app ✅
 

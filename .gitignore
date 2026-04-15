@@ -28,3 +28,4 @@
 .tome.db-shm
 .tome.db-wal
 .worktrees/
+.phpunit.result.cache

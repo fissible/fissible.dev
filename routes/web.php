@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // Marketing pages
 Route::get('/', [MarketingController::class, 'home']);
 Route::get('/station', [MarketingController::class, 'station']);
+Route::view('/station/api-pro', 'pages.station.api-pro');
 Route::get('/tools', [MarketingController::class, 'toolsIndex']);
 Route::get('/tools/{slug}', [MarketingController::class, 'toolShow']);
 
@@ -29,3 +30,4 @@ Route::permanentRedirect('/shellql', '/tools/shellql');
 // Deprecated modules — redirect to tools index
 Route::permanentRedirect('/watch', '/tools');
 Route::permanentRedirect('/fault', '/tools');
+

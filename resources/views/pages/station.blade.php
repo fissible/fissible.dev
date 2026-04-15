@@ -22,6 +22,7 @@
                 <a href="{{ $station['docs_url'] }}" class="btn-secondary">View Docs</a>
             @endif
             <a href="#how-it-works" class="btn-secondary">See how it works &darr;</a>
+            <a href="/station/api-pro" class="btn-secondary">API Pro Module</a>
         </div>
         <div class="station-inline-form-wrap">
             <form class="waitlist-form station-inline-form" action="https://formspree.io/f/{{ $station['formspree_id'] }}" method="POST">
@@ -131,6 +132,28 @@
                 <li>Every version is retained: who changed what, who approved it, and when</li>
                 <li>Each client stays isolated while your agency runs one operational stack</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="station-comparison">
+        <div class="section-intro">
+            <p class="section-kicker">Station Modules</p>
+            <h2>API Pro extends Station beyond content into client integration operations.</h2>
+        </div>
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <h3>API Pro</h3>
+                <p>Contract-aware API management for agencies that maintain Laravel client sites with third-party integrations, OpenAPI specs, and change risk.</p>
+                <p><a href="/station/api-pro" class="tool-entry-github">Read the API Pro preview &rarr;</a></p>
+            </div>
+            <div class="comparison-card">
+                <h3>Built on inspectable tools</h3>
+                <p>API Pro packages the workflow behind public fissible tools like Accord, Drift, and Forge so the technical direction is visible before the module ships.</p>
+            </div>
+            <div class="comparison-card">
+                <h3>Same agency operating model</h3>
+                <p>Client sites, content approvals, tenant isolation, and API change visibility should live in one operational surface instead of separate dashboards.</p>
+            </div>
         </div>
     </section>
 

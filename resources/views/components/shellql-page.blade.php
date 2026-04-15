@@ -79,13 +79,5 @@ shql my.db</code></pre>
         </div>
     @endif
 
-    <!-- Bottom Install -->
-    <section class="shellql-install shellql-install--bottom">
-        <pre class="install-code"><code>{{ $package['install'] }}</code></pre>
-        <div class="install-cta">
-            <a href="{{ $package['github_url'] }}" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub &#x2197;</a>
-            <a href="{{ $package['docs_url'] }}" class="btn-secondary">View Docs</a>
-        </div>
-    </section>
 
 </main>

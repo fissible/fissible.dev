@@ -1,0 +1,105 @@
+<svg width="1600" height="980" viewBox="0 0 1600 980" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Station implementation diagram</title>
+  <desc id="desc">A short diagram showing multiple tenant sites flowing through one Station install with approval workflow, audit log, and publishing controls.</desc>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1520" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F7F2"/>
+      <stop offset="1" stop-color="#E9EFE4"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F6F8F3"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1C7C54"/>
+      <stop offset="1" stop-color="#245B4A"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1600" height="980" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1E2B21" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .eyebrow { font: 700 24px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; fill: #1C7C54; }
+      .headline { font: 700 50px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #162118; }
+      .subhead { font: 400 22px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4C5A4F; }
+      .label { font: 700 20px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #18231A; }
+      .body { font: 400 16px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #536156; }
+      .small { font: 700 16px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5F6C61; letter-spacing: 0.08em; text-transform: uppercase; }
+      .metric { font: 700 28px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #F7FBF7; }
+      .metric-sub { font: 400 18px ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #DCEADF; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="980" fill="url(#bg)"/>
+
+  <text x="120" y="118" class="eyebrow">Station Implementation</text>
+  <text x="120" y="184" class="headline">One install. Multiple tenant sites.</text>
+  <text x="120" y="240" class="headline">One enforced publishing path.</text>
+  <text x="120" y="286" class="subhead">Built for agencies, multi-brand teams, and approval-first organizations</text>
+  <text x="120" y="314" class="subhead">that want multi-tenancy without per-site CMS sprawl.</text>
+
+  <!-- Left panel: Tenant Sites -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="360" width="340" height="400" rx="28" fill="url(#panel)" stroke="#D4DED0" stroke-width="2"/>
+    <text x="160" y="406" class="small">Tenant Sites</text>
+
+    <rect x="160" y="434" width="260" height="76" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="190" y="472" class="label">Client Site A</text>
+    <text x="190" y="494" class="body">Tenant, users, workflow</text>
+
+    <rect x="160" y="530" width="260" height="76" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="190" y="568" class="label">Client Site B</text>
+    <text x="190" y="590" class="body">Tenant, users, workflow</text>
+
+    <rect x="160" y="626" width="260" height="76" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="190" y="664" class="label">Client Site C+</text>
+    <text x="190" y="686" class="body">Add sites without new installs</text>
+  </g>
+
+  <!-- Center panel: Station -->
+  <g filter="url(#shadow)">
+    <rect x="540" y="360" width="540" height="440" rx="36" fill="url(#accent)"/>
+    <text x="590" y="408" font-size="16" font-weight="700" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="0.08em" fill="#FFFFFF">SINGLE SELF-HOSTED INSTALL</text>
+    <text x="590" y="446" font-size="20" font-weight="400" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F7FBF7">Shared application, isolated tenants,</text>
+    <text x="590" y="472" font-size="20" font-weight="400" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F7FBF7">one operational surface</text>
+
+    <rect x="590" y="500" width="440" height="60" rx="18" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="638" y="537" class="label" fill="#F7FBF7">Draft &#x2192; Submit &#x2192; Approve &#x2192; Publish</text>
+
+    <rect x="590" y="584" width="210" height="84" rx="20" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="624" y="622" class="label" fill="#F7FBF7">Audit Log</text>
+    <text x="624" y="648" font-size="14" font-weight="400" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F7FBF7">Every action tracked</text>
+
+    <rect x="820" y="584" width="230" height="84" rx="20" fill="#F6FBF7" fill-opacity="0.14" stroke="#9FD0B5" stroke-width="1.5"/>
+    <text x="854" y="622" class="label" fill="#F7FBF7">Tenant Isolation</text>
+    <text x="854" y="648" font-size="14" font-weight="400" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif" fill="#F7FBF7">Separate sites and users</text>
+  </g>
+
+  <!-- Right panel: Outcomes -->
+  <g filter="url(#shadow)">
+    <rect x="1160" y="360" width="340" height="400" rx="28" fill="url(#panel)" stroke="#D4DED0" stroke-width="2"/>
+    <text x="1200" y="406" class="small">Outcomes</text>
+
+    <rect x="1200" y="434" width="260" height="76" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="1224" y="470" class="label">Approved content</text>
+    <text x="1224" y="494" class="body">Only reviewed changes publish</text>
+
+    <rect x="1200" y="530" width="260" height="76" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="1224" y="566" class="label">Lower ops sprawl</text>
+    <text x="1224" y="590" class="body">One install instead of many</text>
+
+    <rect x="1200" y="626" width="260" height="76" rx="18" fill="#EFF4EC" stroke="#D4DED0" stroke-width="2"/>
+    <text x="1224" y="662" class="label">Better economics</text>
+    <text x="1224" y="686" font-size="14" font-weight="400" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif" fill="#536156">Avoid per-site license multiplication</text>
+  </g>
+
+  <!-- Arrows -->
+  <path d="M460 560H530" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M510 540L540 560L510 580" fill="none" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1080 560H1150" stroke="#1C7C54" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1130 540L1160 560L1130 580" fill="none" stroke="#1C7C54" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Bottom bar -->
+  <rect x="120" y="820" width="1360" height="110" rx="24" fill="#162118"/>
+  <text x="160" y="868" class="metric">Run five client CMS tenants from one Station install</text>
+  <text x="160" y="898" class="metric-sub">instead of paying for five separate site licenses.</text>
+</svg>

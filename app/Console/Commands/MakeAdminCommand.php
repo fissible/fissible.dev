@@ -24,7 +24,14 @@ class MakeAdminCommand extends Command
             return self::SUCCESS;
         }
 
-        $password = $this->secret('Password for new user');
+        $password = null;
+        while (empty($password)) {
+            $password = $this->secret('Password for new user');
+            if (empty($password)) {
+                $this->error('Password cannot be empty.');
+            }
+        }
+
         $name = $this->ask('Name', 'Admin');
 
         User::create([

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class MakeAdminCommand extends Command
 {
-    protected $signature = 'station:make-admin {email : The email address}';
+    protected $signature = 'station:make-admin {email : The email address} {--reset-password= : Set or reset the password}';
 
     protected $description = 'Create or promote a user to platform admin';
 
@@ -18,13 +18,20 @@ class MakeAdminCommand extends Command
         $user = User::where('email', $email)->first();
 
         if ($user) {
-            $user->update(['is_platform_admin' => true]);
+            $user->is_platform_admin = true;
+
+            if ($password = $this->option('reset-password')) {
+                $user->password = Hash::make($password);
+                $this->info("Password reset for {$email}.");
+            }
+
+            $user->save();
             $this->info("User {$email} promoted to platform admin.");
 
             return self::SUCCESS;
         }
 
-        $password = null;
+        $password = $this->option('reset-password');
         while (empty($password)) {
             $password = $this->secret('Password for new user');
             if (empty($password)) {

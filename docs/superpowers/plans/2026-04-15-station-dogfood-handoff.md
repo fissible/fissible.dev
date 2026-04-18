@@ -1,6 +1,6 @@
 # Station Dogfood Handoff: fissible.dev vs station
 
-> **Read this first when working in `fissible/fissible.dev`.** This repo contains older plans that describe turning `fissible.dev` into a Station-shaped Laravel shell. That direction is now superseded.
+> **Read this first when working in `fissible/fissible.dev`.** This repo is the site/overlay source for the Fissible brand and first-party Station tenant. Do not use the older shell migration plans as the current implementation direction.
 
 ## Current Decision
 
@@ -12,7 +12,7 @@ The production dogfood target is:
 
 - `fissible.dev` is a first-party Station tenant served by the canonical Station app.
 - `app.fissible.dev` is the Station control plane for login, admin, and platform management.
-- The current `fissible/fissible.dev` Laravel app is a temporary/reference shell. Do not add new Station product features here.
+- This repo supplies the Fissible site overlay, marketing content, and related assets for that tenant. Keep Station product logic in `fissible/station`.
 
 The current Station-side implementation plan is:
 
@@ -29,12 +29,12 @@ These local plans are historical context, not the current implementation directi
 - `docs/superpowers/plans/2026-04-15-phase2-station-app-structure.md`
 - `docs/superpowers/specs/2026-04-14-phase2-station-app-structure.md`
 
-They explain how the temporary Laravel shell got here, but they should not be used as the next-step plan for Station dogfooding.
+They explain how the site overlay was originally scaffolded, but they should not be used as the next-step plan for Station work.
 
 ## What Not To Do
 
 - Do not port Station modules into this repo.
-- Do not keep building tenant CMS, forms, lead management, subscriptions, content blocks, or platform management in this repo.
+- Do not rebuild tenant CMS, forms, lead management, subscriptions, content blocks, or platform management here.
 - Do not treat this repo's simple `Tenant`, `TenantPage`, `TenantMenu`, or `is_platform_admin` implementation as the future Station architecture.
 - Do not split the product into a custom `fissible.dev` Laravel app plus a separate Station app unless the user explicitly reverses the dogfood decision.
 
@@ -44,7 +44,7 @@ Work in `/Users/allenmccabe/lib/fissible/station`.
 
 1. Verify the first-party tenant plan is fully implemented:
    - `php artisan test --filter=FirstPartyTenantTest`
-   - `php artisan theme:list`
+   - `php artisan station:theme:list`
    - check `config/station.php` for `app_host` and `first_party`
    - check `StationInstall` for configured first-party slug lookups instead of hard-coded `default`
 
@@ -64,7 +64,7 @@ Work in `/Users/allenmccabe/lib/fissible/station`.
    - `app.fissible.dev` -> Station control plane
    - optional wildcard `*.fissible.dev` -> Station for demo/client tenants
 
-5. After Station serves the public site, archive or decommission this temporary app.
+5. After Station serves the public site, keep this repo as the site overlay/reference unless the product direction changes.
 
 ## Open Product Work After Dogfood Bootstrapping
 
@@ -87,4 +87,3 @@ There should be one product implementation:
 There should not be two competing implementations:
 
 `custom fissible.dev app + separate Station app`
-

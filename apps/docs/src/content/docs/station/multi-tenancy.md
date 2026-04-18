@@ -132,3 +132,7 @@ Station uses Spatie Permission with **teams mode** enabled. The `team_id` in Spa
 - Role checks automatically use the current tenant from `TenantContext`
 
 This integrates with the [Roles & Permissions](/station/roles-permissions/) system.
+
+## Content promotion between tenants
+
+Content can be exported from one tenant and imported into another (or the same tenant on a different environment) using the content promotion CLI. Target tenants are resolved by slug — imports reject unknown targets closed, never auto-creating tenants. See [Code vs. Content Deploy](/station/content-promotion/) for the workflow and [Content Package CLI](/station/content-package-cli/) for the command reference.

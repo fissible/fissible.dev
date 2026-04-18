@@ -57,6 +57,9 @@ Platform administrators manage all tenants from the `/platform` panel. See [Mult
 - **[Content Blocks](/station/content-blocks/)** — block-based editor with text, image, callout, quote, embed, CTA, and form blocks
 - **[Entry Versioning](/station/entry-versioning/)** — draft forks, commit history, and rollback
 - **[Content Scheduling](/station/content-scheduling/)** — embargo and expiration dates for timed delivery
+- **[Code vs. Content Deploy](/station/content-promotion/)** — why code and content ship on separate lanes
+- **[Controlled vs. Live Editing](/station/controlled-vs-live-editing/)** — per-tenant and per-content-type editing policy
+- **[Content Package CLI](/station/content-package-cli/)** — `station:content:export` / `station:content:import` reference
 - **[Forms](/station/forms/)** — collect visitor submissions with spam defense
 - **[Automations](/station/automations/)** — trigger actions (like creating entries) when events happen
 - **[Workflows](/station/workflows/)** — review pipelines that govern the content lifecycle

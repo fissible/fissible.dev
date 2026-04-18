@@ -89,3 +89,7 @@ Entries use Laravel's soft delete trait. When an entry is deleted:
 - The canonical entry is soft-deleted
 - Any active fork is also soft-deleted (cascading)
 - Trashed entries can be restored from the admin panel, which also restores the fork if one existed
+
+## Imported commits
+
+Commits created by `station:content:import` carry a `provenance` record on the commit row with the source package checksum, source environment, and source git commit/tag when available. Imports always **append** — the pre-import commit remains recoverable through the history panel. See [Code vs. Content Deploy](/station/content-promotion/) for when to use content packages.

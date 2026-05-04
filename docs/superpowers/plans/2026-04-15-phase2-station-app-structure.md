@@ -1,5 +1,7 @@
 # Phase 2: Station-Shaped App Structure — Implementation Plan
 
+> **Superseded:** This plan describes the temporary `fissible.dev` Laravel shell. Current direction is to serve `fissible.dev` as a first-party tenant from the canonical Station app. See `docs/superpowers/plans/2026-04-15-station-dogfood-handoff.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make fissible.dev a working Station instance with Filament admin, tenant subdomain rendering, and auth.

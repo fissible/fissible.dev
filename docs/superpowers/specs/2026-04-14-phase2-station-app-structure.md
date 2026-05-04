@@ -1,5 +1,7 @@
 # Phase 2: Station-Shaped App Structure
 
+> **Superseded:** This spec describes the temporary `fissible.dev` Laravel shell. Current direction is to serve `fissible.dev` as a first-party tenant from the canonical Station app. See `docs/superpowers/plans/2026-04-15-station-dogfood-handoff.md`.
+
 **Goal:** Make fissible.dev a working Station instance where tenants have real
 public sites, the admin panel works, and new Station features can land without
 restructuring the repo.

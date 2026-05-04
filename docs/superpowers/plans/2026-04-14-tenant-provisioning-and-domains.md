@@ -1,5 +1,7 @@
 # Station Tenant Provisioning and Domain Plan
 
+> **Superseded:** This plan describes the temporary `fissible.dev` Laravel shell. Current direction is to serve `fissible.dev` as a first-party tenant from the canonical Station app. See `docs/superpowers/plans/2026-04-15-station-dogfood-handoff.md`.
+
 ## Goal
 
 Define how Station should handle:

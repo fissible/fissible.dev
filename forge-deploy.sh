@@ -1,5 +1,5 @@
 #!/bin/bash
-# Forge deployment script for fissible.dev
+# Forge deployment script for fissible.dev / staging.fissible.dev
 # Copy this into Forge > Site > Deploy Script
 #
 # Requirements:
@@ -14,12 +14,15 @@
 #   3. Create storage symlink: php artisan storage:link
 #   4. Run initial migration: php artisan migrate --force
 #   5. Create admin user: php artisan station:make-admin admin@fissible.dev
-#   6. Enable wildcard subdomains in Forge site settings
-#   7. Add *.fissible.dev wildcard DNS A record
+#   6. For staging, point APP_URL at https://staging.fissible.dev and use a
+#      separate database + branch
+#   7. Enable wildcard subdomains in Forge site settings only if the site will
+#      host tenant subdomains
+#   8. Add any required DNS records before requesting Let's Encrypt
 
 set -e
 
-cd /home/forge/fissible.dev
+cd "$FORGE_SITE_PATH"
 
 # Maintenance mode — auto-recover if anything fails
 php artisan down --refresh=15

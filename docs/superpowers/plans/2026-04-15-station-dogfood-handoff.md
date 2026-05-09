@@ -22,6 +22,7 @@ Important distinction:
 Those are not in conflict. "Do not split the product into two competing runtime apps"
 does **not** mean customers must receive the same git history Fissible uses internally.
 
+
 The current Station-side implementation plan is:
 
 `/Users/allenmccabe/lib/fissible/station/docs/superpowers/plans/2026-04-15-first-party-tenant.md`
@@ -74,6 +75,7 @@ Work in `/Users/allenmccabe/lib/fissible/station`.
    - optional wildcard `*.fissible.dev` -> Station for demo/client tenants
 
 5. After Station serves the public site, keep this repo as the site overlay/reference unless the product direction changes.
+
 6. If customer self-hosting is active, treat that as a separate distribution problem:
    - customers receive a starter/distribution repo
    - this repo remains Fissible-only overlay/reference material
@@ -104,3 +106,4 @@ There should not be two competing implementations:
 There may still be a separate customer-facing distribution channel:
 
 `internal Station repo -> sanitized starter repo -> customer installs`
+

@@ -14,6 +14,14 @@ The production dogfood target is:
 - `app.fissible.dev` is the Station control plane for login, admin, and platform management.
 - This repo supplies the Fissible site overlay, marketing content, and related assets for that tenant. Keep Station product logic in `fissible/station`.
 
+Important distinction:
+
+- **Runtime architecture:** one Station app serves the first-party Fissible tenant
+- **Customer distribution:** may use a separate starter/distribution repo
+
+Those are not in conflict. "Do not split the product into two competing runtime apps"
+does **not** mean customers must receive the same git history Fissible uses internally.
+
 The current Station-side implementation plan is:
 
 `/Users/allenmccabe/lib/fissible/station/docs/superpowers/plans/2026-04-15-first-party-tenant.md`
@@ -37,6 +45,7 @@ They explain how the site overlay was originally scaffolded, but they should not
 - Do not rebuild tenant CMS, forms, lead management, subscriptions, content blocks, or platform management here.
 - Do not treat this repo's simple `Tenant`, `TenantPage`, `TenantMenu`, or `is_platform_admin` implementation as the future Station architecture.
 - Do not split the product into a custom `fissible.dev` Laravel app plus a separate Station app unless the user explicitly reverses the dogfood decision.
+- Do not confuse a separate customer starter repo with the forbidden "two runtime apps" split; those are different boundaries.
 
 ## What To Do Next
 
@@ -65,6 +74,10 @@ Work in `/Users/allenmccabe/lib/fissible/station`.
    - optional wildcard `*.fissible.dev` -> Station for demo/client tenants
 
 5. After Station serves the public site, keep this repo as the site overlay/reference unless the product direction changes.
+6. If customer self-hosting is active, treat that as a separate distribution problem:
+   - customers receive a starter/distribution repo
+   - this repo remains Fissible-only overlay/reference material
+   - `fissible/station` remains the internal canonical runtime repo
 
 ## Open Product Work After Dogfood Bootstrapping
 
@@ -87,3 +100,7 @@ There should be one product implementation:
 There should not be two competing implementations:
 
 `custom fissible.dev app + separate Station app`
+
+There may still be a separate customer-facing distribution channel:
+
+`internal Station repo -> sanitized starter repo -> customer installs`

@@ -5,24 +5,35 @@ sidebar:
   order: 55
 ---
 
-Station's module system lets you extend the platform with optional features. Modules are self-contained packages that integrate into the admin sidebar, permission system, and search — without modifying core code.
+Station's module system lets you extend the platform with optional features. Modules are self-contained packages that integrate into the admin sidebar, permission system, search, installer hooks, and Filament pages without modifying core code.
 
 ## Quick overview
 
-Station has two types of modules:
+Station has three practical module types:
 
-- **Built-in modules** (CMS, Flow, Forms) — always available, ship with Station
-- **External modules** — installed via Composer, managed through the admin UI or CLI
+- **Built-in modules** (CMS, Flow, Forms) - always available, ship with Station
+- **Bundled modules** (Support) - ship with Station and are registered through the module lifecycle, but cannot be removed
+- **External modules** (AI, CRM, API Module) - installed via Composer, managed through the admin UI or CLI
 
-External modules follow a full lifecycle: install, configure, upgrade, uninstall. Each module can provide its own database migrations, permissions, Filament UI, and configuration.
+External modules follow a full lifecycle: install, configure, upgrade, disable, and remove. Each module can provide its own database migrations, permissions, Filament UI, menu contributions, installer hooks, and configuration.
+
+## First-party modules
+
+| Key | Module | Type | Notes |
+|-----|--------|------|-------|
+| `cms` | CMS | Built-in | Content, media, menus, publishing, scheduling, SEO |
+| `support` | [Support](/station/support/) | Bundled | Knowledge base, help center, inline help text, support feedback |
+| `ai` | [AI Module](/station/ai-module/) | External, free | Bring-your-own-key AI agents, usage audit, AI automation action |
+| `crm` | [CRM Module](/station/crm-module/) | External, premium | Contacts, companies, deals, activities, CRM workflow triggers |
+| `api-pro` | [API Module](/station/api-pro/) | External, premium | API route browser, Request Lab, OpenAPI sync, versions, faults |
 
 ## Managing modules in the admin panel
 
-Navigate to **Admin > Modules** to see all available modules organized into three sections:
+Navigate to **Platform > Modules** to see all available modules organized into sections.
 
 ### Installed
 
-Modules that are installed and active. Shows the installed version and an **Uninstall** button (disabled if other modules depend on it).
+Modules that are installed and active. Shows the installed version and lifecycle actions. Modules that other modules depend on cannot be removed until dependents are removed or disabled.
 
 ### Available
 
@@ -35,7 +46,9 @@ If a module's dependencies are not yet installed, it appears in the **Blocked** 
 | Action | Description |
 |--------|-------------|
 | **Install** | Runs migrations, publishes config, provisions permissions |
-| **Uninstall** | Revokes permissions, removes the Composer package |
+| **Disable** | Stops the module from booting while preserving data and permissions |
+| **Enable** | Re-enables a disabled module from existing data |
+| **Remove** | Disables the module and removes the Composer package when supported |
 | **Retry** | Re-attempt a failed installation from where it left off |
 | **Reset** | Clear a stuck installation state |
 | **Check for Updates** | Runs `composer update` and detects version changes |
@@ -66,15 +79,33 @@ Resolves dependencies (installs them first if needed), runs compatibility checks
 
 If the Composer package isn't installed yet, the command prompts you to run `composer require`.
 
-### Uninstall a module
+### Disable a module
 
 ```bash
-php artisan station:module:uninstall {key}
+php artisan station:module:disable {key}
 ```
 
-Blocks if other installed modules depend on this one. Otherwise, revokes permissions, removes the Composer package, and resets the database record.
+Disabling preserves module data and permissions, but prevents the module provider from booting on the next request.
 
-Database tables created by the module's migrations are **preserved** on uninstall. This is intentional — data is not destroyed when a module is removed.
+### Enable a module
+
+```bash
+php artisan station:module:enable {key}
+```
+
+Re-enables a disabled module without rerunning first-time installation.
+
+### Remove a module
+
+```bash
+php artisan station:module:remove {key}
+```
+
+Blocks if other installed modules depend on this one. Otherwise, disables the module and removes the Composer package when removal is supported.
+
+Database tables created by the module's migrations are **preserved** on removal. This is intentional - data is not destroyed when a module is removed.
+
+`station:module:uninstall` remains as a deprecated alias for `station:module:remove`. Prefer `remove` in new scripts.
 
 ### Scaffold a new module
 
@@ -102,9 +133,11 @@ Modules install in dependency order — dependencies are resolved and installed 
 
 When a module's Composer package is updated, `station:module:list` (or the admin UI's **Check for Updates** action) detects the version change and marks the module as `needs_upgrade`. The upgrade handler runs any version-specific migrations or data transformations.
 
-### Uninstallation
+### Disable and remove
 
-Modules uninstall in reverse dependency order — dependents are removed before their dependencies. The system blocks uninstallation if other installed modules still require the target module.
+Modules are disabled or removed in reverse dependency order. The system blocks removal if other installed modules still require the target module.
+
+Removal is intentionally non-destructive: database tables and tenant data remain in place unless a future destructive cleanup tool explicitly purges them.
 
 ### Status values
 
@@ -120,7 +153,7 @@ Modules uninstall in reverse dependency order — dependents are removed before 
 
 ## Permissions
 
-Each module owns a permission namespace matching its key (e.g., a module with key `analytics` would define `analytics.view`, `analytics.manage`, etc.). Permissions are provisioned during installation and assigned to roles according to the module's default mapping.
+Each module owns a permission namespace matching its key. For example, `ai.configure`, `crm.contacts.view`, and `api-pro.routes.view` all belong to their module namespaces. Permissions are provisioned during installation and assigned to roles according to the module's default mapping.
 
 Permission assignments are only set on first creation. If a tenant admin later customizes role-permission assignments, module upgrades will not overwrite those changes.
 

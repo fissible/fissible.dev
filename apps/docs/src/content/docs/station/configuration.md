@@ -38,6 +38,16 @@ Station is configured primarily through environment variables in the `.env` file
 | `STATION_BACKUPS_ENABLED` | `false` | Enable the backup system (see [Backup Setup](./backups-setup)) |
 | `MFA_ENABLED` | `false` | Enable TOTP two-factor authentication on the profile page |
 
+## First-party modules
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `API_PRO_WRITABLE` | `false` | Allows API Module to send Request Lab requests, generate stubs, write OpenAPI specs, and scaffold versions |
+| `CRM_DEFAULT_CURRENCY` | `USD` | Currency code used when displaying CRM deal amounts |
+| `SENTRY_BROWSER_DSN` | — | Optional browser-side Sentry DSN used by Support feedback and soft-error capture |
+
+AI provider keys are entered per tenant in **AI > AI Agents**. They are not configured as global Station environment variables.
+
 ## Backups
 
 These variables are only relevant when `STATION_BACKUPS_ENABLED=true`.

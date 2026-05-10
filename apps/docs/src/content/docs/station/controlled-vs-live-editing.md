@@ -35,7 +35,7 @@ In controlled mode, these actions are blocked at the service layer (not just hid
 - Admin UI create / edit / publish actions
 - Automation Engine actions that create or mutate entries
 - Forms → Entry automations
-- API Pro write endpoints
+- API Module write endpoints
 - any other caller of the entry service
 
 Read-only viewing of existing entries and their version history remains available. The admin UI shows a banner on index and edit views explaining the controlled state.

@@ -68,6 +68,10 @@ export default defineConfig({
               items: [
                 { slug: 'station/multi-tenancy' },
                 { slug: 'station/modules' },
+                { slug: 'station/ai-module' },
+                { slug: 'station/crm-module' },
+                { slug: 'station/api-pro' },
+                { slug: 'station/support' },
                 { slug: 'station/frontend-theming' },
                 { slug: 'station/maintenance-mode' },
               ],

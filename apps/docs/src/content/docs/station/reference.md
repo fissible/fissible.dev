@@ -32,10 +32,10 @@ Station uses [Spatie Laravel Permission](https://spatie.be/docs/laravel-permissi
 
 ### Integrated operations tooling
 
-Station folds API operations and fault triage into the platform itself rather than shipping them as separate standalone libraries:
+Station can fold API operations and fault triage into the platform through API Pro:
 
-- **API operations** — contract validation, drift analysis, spec generation, and related admin workflows live inside the Station platform experience
-- **Exception triage** — captured faults, deduplication, and resolution workflows are surfaced as Station functionality rather than a separate package
+- **API operations** — [API Pro](/station/api-pro/) provides contract validation, drift analysis, spec generation, Request Lab, and version scaffolding.
+- **Exception triage** — API Pro surfaces captured faults, deduplication, and resolution workflows.
 
 ### Module system
 
@@ -54,7 +54,7 @@ interface PlatformModule
 }
 ```
 
-**External modules** implement `StationModule` with lifecycle methods (`install`, `uninstall`, `onUpgrade`), dependency declarations, and Composer package integration. See [Modules](/station/modules/) for the full reference.
+**External modules** implement `StationModule` with lifecycle methods, dependency declarations, Composer package integration, permissions, migrations, menu contributions, and optional Filament plugins. See [Modules](/station/modules/) for the full reference.
 
 ## CMS Module
 
@@ -94,6 +94,43 @@ Step-based content lifecycle pipelines with five handler types: Gate, Review, Pu
 ### Automations
 
 Event-driven rules that fire actions when triggers occur (e.g., form submission creates a CMS entry). See [Automations](/station/automations/).
+
+## AI Module
+
+[AI Module](/station/ai-module/) adds tenant-owned AI provider agents, AI usage audit, feature-level kill switches, and the `AI: run prompt` automation action.
+
+Provider agents support Anthropic, OpenAI, Google Gemini, AWS Bedrock, and Ollama. Station stores AI run metadata for audit and cost estimation, but provider billing and API keys belong to the tenant.
+
+## CRM Module
+
+[CRM Module](/station/crm-module/) adds contacts, companies, deals, stages, activities, timelines, and CRM automation triggers. Contacts and companies participate in Station global search.
+
+CRM trigger namespace:
+
+- `crm.contact.created`
+- `crm.company.created`
+- `crm.deal.stage_changed`
+- `crm.deal.won`
+- `crm.deal.lost`
+- `crm.activity.created`
+- `crm.activity.completed`
+
+## API Pro
+
+[API Pro](/station/api-pro/) adds:
+
+- Route browser
+- Request Lab
+- OpenAPI spec view/generate/sync
+- Drift detection
+- Version scaffolding
+- Fault triage
+
+Write-capable actions require `API_PRO_WRITABLE=true`.
+
+## Support
+
+[Support](/station/support/) is bundled with Station. It seeds knowledge base, Station help, and inline help content types, registers public `/help` routes, and provides support feedback capture.
 
 ## Multi-tenancy
 

@@ -5,13 +5,13 @@ sidebar:
   order: 21
 ---
 
-Automations let you define rules that fire when events happen — for example, automatically creating a CMS entry when a visitor submits a form. Each automation has a trigger, one or more actions, and a run log that records every execution.
+Automations let you define rules that fire when events happen - for example, automatically creating a CMS entry when a visitor submits a form, or running an AI prompt after a CRM event. Each automation has a trigger, one or more actions, and a run log that records every execution.
 
 ## Quick overview
 
 1. **Create an automation** in the admin panel under **Automation**
 2. **Set a trigger** — what event starts the automation (e.g., form submission)
-3. **Add actions** — what happens when the trigger fires (e.g., create an entry)
+3. **Add actions** — what happens when the trigger fires (e.g., create an entry or run an AI prompt)
 4. **Link to a form** — set the automation on the form's settings page
 5. **Monitor runs** — each execution is logged with status and output
 
@@ -47,6 +47,20 @@ Fires when a visitor submits a form that has this automation linked. The payload
 
 To connect a form to an automation, edit the form and set the **Automation** field. You can also create a new automation inline from the form editor.
 
+### CRM triggers
+
+When the [CRM Module](/station/crm-module/) is installed, CRM events can trigger automations:
+
+| Trigger | Fires when |
+|---------|------------|
+| `crm.contact.created` | A contact is created |
+| `crm.company.created` | A company is created |
+| `crm.deal.stage_changed` | A deal changes stages |
+| `crm.deal.won` | A deal enters the terminal won stage |
+| `crm.deal.lost` | A deal enters the terminal lost stage |
+| `crm.activity.created` | An activity is created |
+| `crm.activity.completed` | An activity is completed |
+
 ## Actions
 
 ### Create Entry
@@ -76,6 +90,26 @@ The Create Entry action uses a field map to translate trigger data into entry fi
 | `static` | A fixed literal value | Any string |
 | `system` | A system-generated value | `now` (ISO datetime) or `timestamp` (Unix) |
 
+### AI: run prompt
+
+When the [AI Module](/station/ai-module/) is installed, automations can run registered prompts with **AI: run prompt**.
+
+Configuration:
+
+| Setting | Description |
+|---------|-------------|
+| Prompt | Registered prompt key to run |
+| Context | Key-value map of prompt inputs. Values can be literals or variable templates |
+
+The action stores generated text and structured data in the action output payload, so later actions can use values such as generated text, token counts, model, agent ID, and AI run ID.
+
+AI actions require:
+
+- The AI Module installed
+- At least one active AI agent for the tenant
+- The feature enabled in **AI > AI Feature Settings**
+- The current user/automation context to have permission to use AI features
+
 ## Run logging
 
 Every automation execution is recorded as a **run** with:
@@ -101,7 +135,7 @@ Failed runs log the error but do not retry automatically. Check the run log to d
 
 The automation engine is designed for future expansion:
 
-- **New triggers** — additional event types beyond form submissions
+- **New triggers** — modules can publish domain events such as CRM record changes
 - **New actions** — custom action classes can be registered via the `ActionRegistry`
 - **Conditions** — per-action conditions are supported in the data model but not yet exposed in the UI
 

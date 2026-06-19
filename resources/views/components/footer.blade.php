@@ -14,6 +14,8 @@
         <div class="footer-links">
             <a href="https://github.com/fissible" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://docs.fissible.dev">Docs</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/sms-terms">SMS Terms</a>
         </div>
     </div>
 </footer>

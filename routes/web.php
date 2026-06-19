@@ -10,6 +10,10 @@ Route::view('/station/api-pro', 'pages.station.api-pro');
 Route::get('/tools', [MarketingController::class, 'toolsIndex']);
 Route::get('/tools/{slug}', [MarketingController::class, 'toolShow']);
 
+// Legal
+Route::view('/privacy', 'pages.privacy');
+Route::view('/sms-terms', 'pages.sms-terms');
+
 // Coming soon products
 Route::get('/guit', [MarketingController::class, 'comingSoon'])
     ->defaults('slug', 'guit');

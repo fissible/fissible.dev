@@ -7,6 +7,8 @@
 
     <p>Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.</p>
 
+    <p>Your mobile opt-in information and consent are not shared with third parties or affiliates for marketing or promotional purposes.</p>
+
     <div class="legal-callout">
         <p><a href="sms:+16615363720?&body=START">Text START to (661) 536-3720</a></p>
     </div>

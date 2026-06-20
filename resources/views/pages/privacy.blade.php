@@ -52,10 +52,10 @@
         Email: <a href="mailto:privacy@fissible.dev">privacy@fissible.dev</a>
     </p>
 
-    <h2 id="sms">Fissible LLC SMS Terms</h2>
-    <p>By providing your mobile number and consenting to text communication, you agree to receive conversational and service-related text messages from Fissible LLC. Messages can concern inquiries, callbacks, scheduling, projects, service updates, and customer support.</p>
-    <p>Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out or HELP for help. For assistance, contact Fissible LLC at <a href="tel:+16615363720">(661) 536-3720</a>.</p>
-    <p>Wireless carriers are not liable for delayed or undelivered messages.</p>
-    <p>For full details on how you opt in, the verbal consent script we use, and how to opt out, see our <a href="/sms-terms">SMS Terms</a> page.</p>
+    <h2 id="sms">SMS Communications</h2>
+    <p>Fissible LLC collects mobile phone numbers and SMS consent records to provide requested customer care, scheduling, project updates, follow-ups, and support communications.</p>
+    <p>Mobile information and messaging opt-in consent will not be shared with third parties or affiliates for marketing or promotional purposes. Information may be shared with service providers only as necessary to deliver the SMS service.</p>
+    <p>Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.</p>
+    <p>You opt in by texting START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a>. For full details, see our <a href="/sms-terms">SMS Terms</a> page.</p>
 </article>
 </x-layouts.marketing>

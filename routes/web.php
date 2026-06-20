@@ -13,6 +13,7 @@ Route::get('/tools/{slug}', [MarketingController::class, 'toolShow']);
 // Legal
 Route::view('/privacy', 'pages.privacy');
 Route::view('/sms-terms', 'pages.sms-terms');
+Route::view('/text', 'pages.text');
 
 // Coming soon products
 Route::get('/guit', [MarketingController::class, 'comingSoon'])

@@ -1,32 +1,27 @@
-<x-layouts.marketing title="SMS Terms" description="SMS messaging terms for Fissible LLC: consent, message frequency, rates, and how to opt out.">
+<x-layouts.marketing title="SMS Terms" description="SMS messaging terms for Fissible LLC: how to opt in by texting START, message frequency, rates, and how to opt out.">
 <article class="legal-page">
     <h1>Fissible LLC SMS Terms</h1>
-    <p class="legal-meta">Last updated June 19, 2026</p>
+    <p class="legal-meta">Last updated June 20, 2026</p>
 
-    <p>By providing your mobile number and consenting to text communication, you agree to receive conversational and service-related text messages from Fissible LLC. Messages can concern inquiries, callbacks, scheduling, projects, service updates, and customer support.</p>
+    <p>By texting START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a>, you agree to receive recurring one-to-one customer care and project-related text messages from Fissible LLC. Messages may include replies to inquiries, scheduling, requested follow-ups, project updates, and customer support.</p>
 
-    <p>Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out or HELP for help. For assistance, contact Fissible LLC at <a href="tel:+16615363720">(661) 536-3720</a>.</p>
+    <p>Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase.</p>
+
+    <p>Reply STOP to opt out. Reply HELP for help. You may also contact Fissible LLC at <a href="tel:+16615363720">(661) 536-3720</a>.</p>
 
     <p>Wireless carriers are not liable for delayed or undelivered messages.</p>
 
     <h2>How you opt in</h2>
-    <p>Recipients opt in to receive text messages from Fissible LLC in one of two ways:</p>
-    <ul>
-        <li>You initiate an SMS conversation with Fissible LLC at <a href="tel:+16615363720">(661) 536-3720</a>, and Fissible LLC replies only regarding your request.</li>
-        <li>Before Fissible LLC sends a proactive service-related text, you expressly agree during a phone call or in writing by email to receive texts at the mobile number you provide.</li>
-    </ul>
-
-    <p>For verbal consent, Fissible LLC uses this script:</p>
+    <p>Text <strong>START</strong> to <a href="sms:+16615363720?&body=START">(661) 536-3720</a>. After you text START, Fissible LLC sends a one-time confirmation that you are subscribed. No messages are sent before you opt in.</p>
     <div class="legal-callout">
-        <p>&ldquo;May Fissible LLC text you at this number about your inquiry, scheduling, project, or service updates? Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.&rdquo;</p>
+        <p><a href="sms:+16615363720?&body=START">Text START to (661) 536-3720</a></p>
     </div>
-
-    <p>Fissible LLC retains records of consent. It does not use purchased lists, third-party lead lists, or unsolicited marketing texts.</p>
+    <p>Fissible LLC does not obtain SMS consent through purchased lists, third-party lead sources, prechecked forms, or unsolicited outreach.</p>
 
     <h2>Opt out and help</h2>
-    <p>You can cancel SMS messages at any time by replying <strong>STOP</strong>. After you send STOP, Fissible LLC will send one confirmation message and then stop sending texts. Reply <strong>HELP</strong> for help, or contact us at <a href="tel:+16615363720">(661) 536-3720</a>.</p>
+    <p>You can cancel SMS messages at any time by replying <strong>STOP</strong>. After you send STOP, Fissible LLC sends one confirmation message and then stops sending texts. Reply <strong>HELP</strong> for help, or contact us at <a href="tel:+16615363720">(661) 536-3720</a>.</p>
 
     <h2>Privacy</h2>
-    <p>Mobile information and consent are never shared with third parties for their marketing purposes. See our <a href="/privacy">Privacy Policy</a> for full details on how we handle your information.</p>
+    <p>Mobile information and SMS opt-in consent are never shared with third parties or affiliates for marketing or promotional purposes. See our <a href="/privacy">Privacy Policy</a> for full details on how we handle your information.</p>
 </article>
 </x-layouts.marketing>

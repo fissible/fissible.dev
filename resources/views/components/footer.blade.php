@@ -19,7 +19,7 @@
         </div>
     </div>
     <p class="footer-sms-consent">
-        Text START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a> to opt in to recurring customer care and project-related texts from Fissible LLC.
+        Text START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a> to opt in to recurring customer care and project-related texts from Mesabit, a service of Fissible LLC.
         Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.
         See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy">Privacy Policy</a>.
     </p>

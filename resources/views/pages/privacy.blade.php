@@ -53,9 +53,9 @@
     </p>
 
     <h2 id="sms">SMS Communications</h2>
-    <p>Fissible LLC collects mobile phone numbers and SMS consent records to provide requested customer care, scheduling, project updates, follow-ups, and support communications.</p>
+    <p>Fissible LLC, through its Mesabit service, collects mobile phone numbers and SMS consent records to provide requested customer care, scheduling, project updates, follow-ups, and support communications.</p>
     <p>Mobile information and messaging opt-in consent will not be shared with third parties or affiliates for marketing or promotional purposes. Information may be shared with service providers only as necessary to deliver the SMS service.</p>
     <p>Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help.</p>
-    <p>You opt in by texting START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a>. For full details, see our <a href="/sms-terms">SMS Terms</a> page.</p>
+    <p>You opt in by texting START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a> to receive texts from Mesabit. For full details, see our <a href="/sms-terms">SMS Terms</a> page.</p>
 </article>
 </x-layouts.marketing>

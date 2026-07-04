@@ -9,7 +9,7 @@
         </div>
         <div class="footer-contact">
             <span class="footer-address">2108 N St, Ste N, Sacramento, CA 95816</span>
-            <a href="tel:+16615363720" class="footer-phone">(661) 536-3720</a>
+            <a href="tel:+16615146644" class="footer-phone">(661) 514-6644</a>
         </div>
         <div class="footer-links">
             <a href="https://github.com/fissible" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -18,4 +18,9 @@
             <a href="/sms-terms">SMS Terms</a>
         </div>
     </div>
+    <p class="footer-sms-consent">
+        Text START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a> to opt in to recurring customer care and project-related texts from Mesabit, a service of Fissible LLC.
+        Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.
+        See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy">Privacy Policy</a>.
+    </p>
 </footer>

@@ -48,7 +48,7 @@
     <p>
         Fissible LLC<br>
         2108 N St, Ste N, Sacramento, CA 95816<br>
-        Phone: <a href="tel:+16615363720">(661) 536-3720</a><br>
+        Phone: <a href="tel:+16615146644">(661) 514-6644</a><br>
         Email: <a href="mailto:privacy@fissible.dev">privacy@fissible.dev</a>
     </p>
 

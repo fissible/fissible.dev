@@ -9,7 +9,7 @@
         </div>
         <div class="footer-contact">
             <span class="footer-address">2108 N St, Ste N, Sacramento, CA 95816</span>
-            <a href="tel:+16615363720" class="footer-phone">(661) 536-3720</a>
+            <a href="tel:+16615146644" class="footer-phone">(661) 514-6644</a>
         </div>
         <div class="footer-links">
             <a href="https://github.com/fissible" target="_blank" rel="noopener noreferrer">GitHub</a>

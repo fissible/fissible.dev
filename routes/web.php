@@ -10,10 +10,15 @@ Route::view('/station/api-pro', 'pages.station.api-pro');
 Route::get('/tools', [MarketingController::class, 'toolsIndex']);
 Route::get('/tools/{slug}', [MarketingController::class, 'toolShow']);
 
+// Case studies
+Route::view('/case-studies', 'pages.case-studies');
+
 // Legal
 Route::view('/privacy', 'pages.privacy');
-Route::view('/sms-terms', 'pages.sms-terms');
-Route::view('/text', 'pages.text');
+
+// SMS moved to the Mesabit site (mesabit.net) — redirect legacy URLs
+Route::redirect('/sms-terms', 'https://mesabit.net/sms-terms', 301);
+Route::redirect('/text', 'https://mesabit.net/text', 301);
 
 // Coming soon products
 Route::get('/guit', [MarketingController::class, 'comingSoon'])

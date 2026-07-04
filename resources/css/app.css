@@ -787,23 +787,12 @@ pre {
   color: var(--text-muted);
 }
 .footer-links a:hover { color: var(--text); }
-.footer-sms-consent {
-  max-width: var(--max-w);
-  margin: 1.5rem auto 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.72rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-.footer-sms-consent a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
-.footer-sms-consent a:hover { color: var(--text); }
 @media (max-width: 600px) {
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
   .footer-contact { align-items: flex-start; }
 }
 
-/* ---------- Legal pages (privacy, SMS terms) ---------- */
+/* ---------- Legal pages (privacy) ---------- */
 .legal-page { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
 .legal-page h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
 .legal-page .legal-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2.5rem; }
@@ -824,3 +813,39 @@ pre {
 }
 .legal-page .legal-callout p:last-child { margin-bottom: 0; }
 .legal-page .legal-callout strong { color: var(--text); }
+
+/* ---------- Case Studies ---------- */
+.cs-page { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem 5rem; display: flex; flex-direction: column; gap: 3.5rem; }
+.cs-hero { max-width: 720px; display: flex; flex-direction: column; gap: 1rem; }
+.cs-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; }
+.cs-headline { font-size: clamp(2rem, 4.8vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.cs-subhead { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 640px; }
+
+.cs-index { display: flex; flex-direction: column; gap: 1.25rem; }
+.cs-card { display: flex; flex-direction: column; gap: 0.85rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-subtle); padding: 1.5rem 1.75rem; transition: border-color 0.15s, background 0.15s; }
+.cs-card:hover { border-color: var(--text-muted); background: var(--bg-elevated); }
+.cs-card-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
+.cs-card-name { font-size: 1.25rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+.cs-card-sector { font-size: 0.8rem; color: var(--text-muted); }
+.cs-card-summary { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; max-width: 640px; }
+.cs-card-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.cs-card-more { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+
+.cs-detail { display: flex; flex-direction: column; gap: 2rem; scroll-margin-top: 72px; border-top: 1px solid var(--border); padding-top: 3rem; }
+.cs-detail-head { display: flex; flex-direction: column; gap: 0.75rem; max-width: 720px; }
+.cs-detail-title { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; }
+.cs-detail-tagline { font-size: 1.05rem; color: var(--text-muted); line-height: 1.55; }
+.cs-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.75rem; }
+.cs-meta-grid > div { display: flex; flex-direction: column; gap: 0.2rem; }
+.cs-meta-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; }
+.cs-meta-value { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
+.cs-meta-value a { color: var(--accent); }
+.cs-block { max-width: 720px; display: flex; flex-direction: column; gap: 0.75rem; }
+.cs-block h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+.cs-block p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+.cs-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.cs-list li { position: relative; padding-left: 1.25rem; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+.cs-list li::before { content: '\2022'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.cs-list strong { color: var(--text); font-weight: 600; }
+.cs-block code { font-family: var(--font-mono); font-size: 0.85em; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 0.05rem 0.35rem; }
+.cs-cta { margin-top: 0.5rem; }

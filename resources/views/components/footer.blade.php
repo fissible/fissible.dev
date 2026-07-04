@@ -14,13 +14,8 @@
         <div class="footer-links">
             <a href="https://github.com/fissible" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://docs.fissible.dev">Docs</a>
+            <a href="/case-studies">Case Studies</a>
             <a href="/privacy">Privacy</a>
-            <a href="/sms-terms">SMS Terms</a>
         </div>
     </div>
-    <p class="footer-sms-consent">
-        Text START to <a href="sms:+16615363720?&body=START">(661) 536-3720</a> to opt in to recurring customer care and project-related texts from Mesabit, a service of Fissible LLC.
-        Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase.
-        See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy">Privacy Policy</a>.
-    </p>
 </footer>

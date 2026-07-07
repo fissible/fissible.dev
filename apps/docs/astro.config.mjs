@@ -16,6 +16,12 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: 'Fissible Phone',
+          link: 'https://fissiblephone.com/docs',
+          badge: { text: 'iOS', variant: 'note' },
+          attrs: { target: '_blank', rel: 'noopener' },
+        },
+        {
           label: 'station',
           items: [
             { slug: 'station' },

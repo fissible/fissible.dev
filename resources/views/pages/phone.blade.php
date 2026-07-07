@@ -1,7 +1,3 @@
-@php
-    // Early-access capture. TODO: replace with the Fissible Phone Formspree form ID.
-    $formspreeId = 'YOUR_PHONE_FORM_ID';
-@endphp
 <x-layouts.marketing
     title="Fissible Phone · Business Phone App for iPhone"
     description="Fissible Phone is an iOS business phone app for multi-line calling, voicemail, caller screening, and future AI receptionist workflows. Built for small businesses that need a premium phone system on iPhone.">
@@ -310,11 +306,7 @@
     <section class="phone-cta" id="early-access">
         <h2 class="phone-h2">Get early access to Fissible Phone</h2>
         <p class="phone-lead">Fissible Phone is in active development. Join the early access list to follow progress, test the app, and help shape the business phone system we&rsquo;re building for iPhone-first teams.</p>
-        <form class="waitlist-form" action="https://formspree.io/f/{{ $formspreeId }}" method="POST">
-            <input type="email" name="email" placeholder="Work email" required>
-            <input type="hidden" name="product" value="phone">
-            <button type="submit">Request Early Access</button>
-        </form>
+        <a class="btn-primary" href="mailto:hi@fissible.dev?subject=Fissible%20Phone%20%E2%80%94%20Early%20Access&body=I%27d%20like%20early%20access%20to%20Fissible%20Phone.%0A%0ABusiness%20name%3A%0AHow%20I%27d%20use%20it%3A">Request Early Access</a>
         <p class="phone-trust">Built by Fissible for small businesses that need a smarter, cleaner way to handle calls. Fissible Phone is not affiliated with or endorsed by Twilio.</p>
     </section>
 

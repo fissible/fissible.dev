@@ -1,5 +1,8 @@
 <nav class="nav">
-    <a href="/" class="nav-logo">fissible</a>
+    <a href="/" class="nav-logo">
+        <img src="/fissible-logo.svg" alt="fissible" class="nav-logo-mark" width="30" height="30">
+        <span class="nav-logo-word">fissible</span>
+    </a>
     <div class="nav-links">
         <a href="/phone" class="nav-link">Phone</a>
         <a href="/station" class="nav-link">Station</a>

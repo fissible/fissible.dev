@@ -3,7 +3,12 @@
         <img src="/fissible-logo.svg" alt="fissible" class="nav-logo-mark" width="30" height="30">
         <span class="nav-logo-word">fissible</span>
     </a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-menu">
         <a href="/phone" class="nav-link">Phone</a>
         <a href="/station" class="nav-link">Station</a>
         <a href="/tools" class="nav-link">Tools</a>

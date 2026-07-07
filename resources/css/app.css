@@ -121,6 +121,29 @@ pre {
 .nav-logo:hover { color: var(--text); }
 .nav-logo-mark { display: none; }
 
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
 .nav-links { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
 
 .nav-link {
@@ -133,13 +156,35 @@ pre {
 }
 .nav-link:hover { color: var(--text); background: var(--bg-elevated); }
 
-/* Mobile header: swap wordmark for the logo mark, tighten spacing, compact banner */
+/* Mobile header: logo mark + hamburger menu + compact banner */
 @media (max-width: 600px) {
   .nav { padding: 0 1rem; gap: 0.75rem; }
-  .nav-links { gap: 0; }
-  .nav-link { padding: 0.4rem 0.5rem; font-size: 0.85rem; }
   .nav-logo-word { display: none; }
   .nav-logo-mark { display: block; width: 30px; height: 30px; }
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0.5rem 1rem 0.85rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 24px -12px rgba(0,0,0,0.6);
+  }
+  .nav-links.open { display: flex; }
+  .nav-link { width: 100%; padding: 0.7rem 0.6rem; font-size: 0.95rem; }
+
+  /* hamburger morphs to an X when open */
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .announcement-bar { font-size: 0.78rem; }
   .announcement-msg-full,

@@ -9,7 +9,7 @@
         <span class="nav-toggle-bar"></span>
     </button>
     <div class="nav-links" id="nav-menu">
-        <a href="/phone" class="nav-link">Phone</a>
+        <a href="https://fissiblephone.com" class="nav-link">Phone</a>
         <a href="/station" class="nav-link">Station</a>
         <a href="/tools" class="nav-link">Tools</a>
         <a href="/case-studies" class="nav-link">Case Studies</a>

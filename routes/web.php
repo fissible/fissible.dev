@@ -10,8 +10,8 @@ Route::view('/station/api-pro', 'pages.station.api-pro');
 Route::get('/tools', [MarketingController::class, 'toolsIndex']);
 Route::get('/tools/{slug}', [MarketingController::class, 'toolShow']);
 
-// Products
-Route::view('/phone', 'pages.phone');
+// Products — Fissible Phone lives on its own domain; redirect the legacy page
+Route::redirect('/phone', 'https://fissiblephone.com', 301);
 
 // Case studies
 Route::view('/case-studies', 'pages.case-studies');

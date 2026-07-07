@@ -49,7 +49,6 @@
         <div class="phone-prose">
             <p>Most small business phone setups force you into one of two bad options: forward everything to your personal cell, or stitch together phone numbers, SIP trunks, forwarding rules, softphones, and dashboards.</p>
             <p>That works until it doesn&rsquo;t. You miss calls. Spam gets through. Voicemail is hard to review. Business and personal blur together. And when you grow from one person to a small team, the whole setup becomes fragile.</p>
-            <p>Fissible Phone is being built to make the business phone experience feel native, organized, and professional on iPhone.</p>
         </div>
         <ul class="phone-list phone-list-cols">
             <li>Personal and business calls get mixed together</li>
@@ -59,6 +58,9 @@
             <li>Existing Twilio workflows require too much setup</li>
             <li>Traditional PBX systems feel heavy for small teams</li>
         </ul>
+        <div class="phone-prose">
+            <p>Fissible Phone is being built to make the business phone experience feel native, organized, and professional on iPhone.</p>
+        </div>
     </section>
 
     {{-- Solution / feature cards --}}

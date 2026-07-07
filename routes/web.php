@@ -10,6 +10,9 @@ Route::view('/station/api-pro', 'pages.station.api-pro');
 Route::get('/tools', [MarketingController::class, 'toolsIndex']);
 Route::get('/tools/{slug}', [MarketingController::class, 'toolShow']);
 
+// Products
+Route::view('/phone', 'pages.phone');
+
 // Case studies
 Route::view('/case-studies', 'pages.case-studies');
 

@@ -943,6 +943,7 @@ pre {
 .phone-mock-frame { position: relative; width: 260px; aspect-ratio: 9 / 19; background: #050505; border: 10px solid #1c1c1e; border-radius: 40px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.04); padding: 1.5rem 1.15rem 1.75rem; display: flex; flex-direction: column; align-items: center; }
 .phone-mock-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 42%; height: 20px; background: #1c1c1e; border-radius: 0 0 14px 14px; }
 .phone-mock-screen { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; text-align: center; width: 100%; margin-top: 1.4rem; }
+.pm-app { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); font-weight: 700; }
 .pm-line { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; }
 .pm-avatar { width: 76px; height: 76px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.9rem; color: var(--text-muted); margin: 0.5rem 0; }
 .pm-caller { font-size: 1.05rem; font-weight: 700; color: var(--text); }
@@ -950,9 +951,9 @@ pre {
 .pm-sub { font-size: 0.72rem; color: var(--text-muted); }
 .pm-actions { display: flex; gap: 0.4rem; margin-top: auto; width: 100%; }
 .pm-btn { flex: 1; font-size: 0.62rem; font-weight: 700; padding: 0.5rem 0.2rem; border-radius: 999px; color: #fff; }
-.pm-decline { background: #b3261e; }
 .pm-vm { background: var(--bg-elevated); color: var(--text-muted); border: 1px solid var(--border); }
-.pm-accept { background: #1f7a3d; }
+.pm-accept { background: var(--accent); }
+.pm-caption { font-size: 0.56rem; color: var(--text-muted); margin-top: 0.5rem; }
 
 /* Generic section */
 .phone-section { display: flex; flex-direction: column; }

@@ -14,7 +14,7 @@
                 <li>Manage multiple business lines from one iPhone app</li>
                 <li>Screen unknown callers before they interrupt your day</li>
                 <li>Review voicemail with transcription and structured summaries</li>
-                <li>English and Spanish (US) &mdash; built bilingual</li>
+                <li>Built for bilingual businesses &mdash; English now, Spanish caller prompts planned</li>
             </ul>
             <div class="phone-cta-row">
                 <a href="#early-access" class="btn-primary">Request Early Access</a>
@@ -23,21 +23,22 @@
             <p class="phone-trust">Built by Fissible. Powered by Twilio infrastructure. Designed for iPhone-first business communication.</p>
         </div>
 
-        {{-- Screenshot-free product mock: caller-screening call screen --}}
+        {{-- Screenshot-free product mock: in-app screened caller context (not the system call screen) --}}
         <div class="phone-mock" aria-hidden="true">
             <div class="phone-mock-frame">
                 <div class="phone-mock-notch"></div>
                 <div class="phone-mock-screen">
+                    <p class="pm-app">Fissible Phone</p>
                     <p class="pm-line">Business line &middot; Sales</p>
                     <div class="pm-avatar">?</div>
                     <p class="pm-caller">Unknown Caller</p>
                     <p class="pm-status">Screening&hellip;</p>
-                    <p class="pm-sub">(661) 555&ndash;0148 &middot; No caller ID</p>
+                    <p class="pm-sub">(661) 555&ndash;0148 &middot; Not in your contacts</p>
                     <div class="pm-actions">
-                        <span class="pm-btn pm-decline">Decline</span>
                         <span class="pm-btn pm-vm">Voicemail</span>
-                        <span class="pm-btn pm-accept">Accept</span>
+                        <span class="pm-btn pm-accept">Answer</span>
                     </div>
+                    <p class="pm-caption">Screened caller context, in the app</p>
                 </div>
             </div>
         </div>
@@ -66,7 +67,7 @@
     {{-- Solution / feature cards --}}
     <section class="phone-section" id="features">
         <h2 class="phone-h2">A business phone layer built around the iPhone</h2>
-        <p class="phone-lead">Fissible Phone turns your business number into a dedicated iOS calling experience &mdash; the control of a real phone system without making every owner or employee a telecom admin.</p>
+        <p class="phone-lead">Fissible Phone turns your business number into a dedicated iOS calling experience &mdash; the control of a real phone system without making owners into telecom admins.</p>
         <div class="phone-cards">
             <article class="phone-card">
                 <h3>Multi-line calling</h3>
@@ -85,8 +86,8 @@
                 <p>Operate more than one business or brand from the same device while keeping calls and lines cleanly separated.</p>
             </article>
             <article class="phone-card">
-                <h3>Bilingual by design</h3>
-                <p>English and Spanish (US) across the app experience, so bilingual owners and teams can work in the language their customers speak.</p>
+                <h3>Built for bilingual businesses</h3>
+                <p>English today, with Spanish (US) caller prompts planned &mdash; designed for owners and teams whose customers speak both.</p>
             </article>
             <article class="phone-card">
                 <h3>iPhone-first experience</h3>
@@ -183,7 +184,7 @@
             <li>Consultant managing multiple brands</li>
             <li>Small business with sales and support lines</li>
             <li>Founder testing a new business line before hiring</li>
-            <li>Team with different numbers per employee</li>
+            <li>Owners or small teams managing separate business lines</li>
             <li>Multi-brand operator keeping lines distinct</li>
         </ul>
     </section>
@@ -207,9 +208,9 @@
 
     {{-- Twilio positioning --}}
     <section class="phone-section">
-        <h2 class="phone-h2">Twilio power without the Twilio setup</h2>
+        <h2 class="phone-h2">Twilio power without PBX complexity</h2>
         <div class="phone-prose">
-            <p>Twilio is powerful infrastructure, but turning a Twilio number into a polished iPhone business phone usually means configuring credentials, softphones, forwarding rules, Studio flows, SIP trunks, or custom code. Fissible Phone is designed to turn that infrastructure into a complete business phone experience.</p>
+            <p>Twilio is powerful infrastructure, but turning a Twilio number into a polished iPhone business phone usually means configuring credentials, softphones, forwarding rules, Studio flows, SIP trunks, or custom code. Fissible Phone turns that infrastructure into an iPhone-first business phone experience. Early access connects to your own Twilio account; guided setup and managed onboarding are planned, so owners don&rsquo;t have to become telecom admins.</p>
         </div>
         <ul class="phone-list phone-list-cols">
             <li>Built on proven communications infrastructure</li>
@@ -231,7 +232,7 @@
                 </thead>
                 <tbody>
                     <tr><td>Connects to a number</td><td>Organizes calling around lines, contacts, voicemail, and screening</td></tr>
-                    <tr><td>Requires telecom setup</td><td>Designed to reduce setup complexity</td></tr>
+                    <tr><td>Requires telecom setup</td><td>Built to reduce setup complexity (managed setup planned)</td></tr>
                     <tr><td>Treats every call the same</td><td>Focuses on caller context and screening</td></tr>
                     <tr><td>Generic call history</td><td>Business-focused recents, contacts, and voicemail</td></tr>
                     <tr><td>Usually one account, one line</td><td>Built toward multi-line and multi-business workflows</td></tr>
@@ -275,7 +276,7 @@
             </details>
             <details>
                 <summary>Does it work with Twilio?</summary>
-                <p>Fissible Phone is built around Twilio-backed calling infrastructure, so you get a polished iPhone business phone experience without assembling your own softphone setup.</p>
+                <p>Yes. Fissible Phone is built around Twilio-backed calling infrastructure. Early access connects to your own Twilio account; guided setup and managed onboarding are planned, so you won&rsquo;t have to assemble a softphone stack yourself.</p>
             </details>
             <details>
                 <summary>Is Fissible Phone affiliated with Twilio?</summary>
@@ -283,7 +284,7 @@
             </details>
             <details>
                 <summary>Is it available in Spanish?</summary>
-                <p>Yes. Fissible Phone is being built bilingual, with support for English and Spanish (US).</p>
+                <p>English is supported today. Spanish (US) caller prompts are planned as a near-term priority for bilingual businesses.</p>
             </details>
             <details>
                 <summary>Will it support SMS?</summary>
@@ -299,7 +300,7 @@
             </details>
             <details>
                 <summary>Do I need to understand SIP, PBX, or Twilio Studio?</summary>
-                <p>No. The product direction is to hide as much telecom complexity as possible behind a clean iOS business phone experience.</p>
+                <p>Long term, no &mdash; hiding telecom complexity behind a clean iOS experience is the goal. During early access, connecting your Twilio account involves some guided setup, and managed onboarding is planned.</p>
             </details>
         </div>
     </section>

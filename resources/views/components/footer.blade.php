@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-brand">
-            <img src="https://avatars.githubusercontent.com/u/1410914?s=36" alt="Fissible" class="footer-avatar" width="36" height="36">
+            <img src="/fissible-logo.svg" alt="Fissible" class="footer-avatar" width="36" height="36">
             <div class="footer-brand-text">
                 <span class="footer-company">Fissible LLC</span>
                 <a href="https://fissible.dev" class="footer-domain">fissible.dev</a>

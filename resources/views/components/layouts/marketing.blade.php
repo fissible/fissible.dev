@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ $description ?? 'Self-hosted CMS and API platform with enforced approvals and contract validation.' }}">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <title>{{ isset($title) && $title !== 'fissible' ? $title . ' — fissible' : 'fissible' }}</title>
+    <title>{{ isset($title) && $title !== 'Fissible' ? $title . ' — Fissible' : 'Fissible' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     {{-- Google Analytics (GA4) — production only --}}

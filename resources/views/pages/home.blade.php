@@ -1,4 +1,4 @@
-<x-layouts.marketing title="fissible">
+<x-layouts.marketing title="Station - Self-Hosted CMS for Agencies">
     <x-hero />
     <x-workflow-animation />
     <x-use-case />

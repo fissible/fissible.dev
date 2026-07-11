@@ -1,4 +1,4 @@
-<x-layouts.marketing title="Station - Self-Hosted CMS for Agencies">
+<x-layouts.marketing title="Software and Developer Tools">
     <x-hero />
     <x-workflow-animation />
     <x-use-case />

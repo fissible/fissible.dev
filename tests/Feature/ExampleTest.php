@@ -15,6 +15,6 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('<title>Station - Self-Hosted CMS for Agencies — Fissible</title>', false);
+        $response->assertSee('<title>Software and Developer Tools — Fissible</title>', false);
     }
 }
